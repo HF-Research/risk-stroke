@@ -6,24 +6,22 @@
 \title{One-year risk of bleeding}
 \format{A data frame with 2560 rows and 16 variables:
 \describe{
-  \item{year2000}{xxx}
+  \item{year2000}{Year the prediction is valid for. 15 means 2015.}
   \item{age}{Age of patient}
-  \item{bleeding}{xxx}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
-  \item{}{}
+  \item{bleeding}{Previous history of bleeding}
+  \item{stroke}{}
+  \item{hypertension}{}
+  \item{ckd}{}
+  \item{drugs}{}
+  \item{bleeding1y}{}
+  \item{bleeding1y.lower}{}
+  \item{bleeding1y.upper}{}
+  \item{ICH1y}{}
+  \item{ICH1y.lower}{}
+  \item{ICH1y.upper}{}
+  \item{GI1y}{}
+  \item{GI1y.lower}{}
+  \item{GI1y.upper}{}
 
   ...
 }}
