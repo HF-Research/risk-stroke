@@ -2,3 +2,4 @@
 
 export(riskCalc)
 import(data.table)
+import(shiny)
