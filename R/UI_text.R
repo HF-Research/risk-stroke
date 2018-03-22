@@ -1,4 +1,6 @@
-# Text file for Shiny UI
+# Text file for Shiny UI.
+#
+# Make edits to the UI in this file
 # Var names should not contain "." due to conflicts with JavaScript
 
 # TITLE -------------------------------------------------------------------
