@@ -2,6 +2,7 @@
 #'
 #' @return
 #' @import data.table
+#' @import shiny
 #' @export
 #'
 #' @examples
