@@ -16,10 +16,15 @@ in_hyperT <- "Has patient ever had hypertension"
 in_diab <- "Has patient ever had diabetes"
 in_vasc <- "Has patient ever had vascular disease"
 
+# Must be in quotedt pixels (px), e.g.: "100px"
+in_txt_size <-
+
 
 # OUTPUT TEXT -------------------------------------------------------------
 
 out_stroke <- "1-year stroke risk is estimated to be:"
+out_stroke_text_size <- "32px"
+
 out_thomb <- "1-year thomboembolism risk is estimated to be:"
 
 # Text that appears when user has not entered an appropriate age (i.e. <20 ||

@@ -47,11 +47,10 @@ riskCalc <- function(){
       # Give CSS styles to selected elements
       tags$head(
         tags$style(type = "text/css", "#results {max-width:620px;}"),
-
         tags$style(type = "text/css", "#input_col {max-width:380px;}"), #max width input
         tags$style(type = "text/css", ".container-fluid {margin:auto; max-width: 1000px}"),
-
-        tags$style("#user_age {font-size:38px;height:50px; width: 110px;}") # font size
+        tags$style("#user_age {font-size:38px;height:50px; width: 110px;}"), # font size
+        tags$style(paste0("#stroke_results_text {font-size:", out_stroke_text_size, "}")) # font size
       ),
       # Sidebar with a slider input for number of bins
       fluidRow(
@@ -148,10 +147,7 @@ riskCalc <- function(){
         # Show a plot of the generated distribution
         column(id = "results",
                6,
-
-
-
-               tags$h2(out_stroke),
+               div(id = "stroke_results_text", out_stroke),
                tags$h2(strong(textOutput("strokeRisk"))),
                br(),
                tags$h2(out_thomb),
