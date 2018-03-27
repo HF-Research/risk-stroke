@@ -1,23 +1,43 @@
 # Helper functions
 
-jsButtonColor <- function(var, color, value){
+jsButtonColor <- function(var, color, value) {
   # Makes simple js code to color buttons in shinyWidgets library. From:
   # https://github.com/dreamRs/shinyWidgets/issues/41
   # var, color and yes/no need to be in quotes
-  paste0("$(\"input:radio[name='",
-         var,
-         "'][value='",
-         paste0(value),
-         "']\").parent().css('background-color', '",
-         color,
-         "');")  
+  paste0(
+    "$(\"input:radio[name='",
+    var,
+    "'][value='",
+    paste0(value),
+    "']\").parent().css({'background-color': '",
+    color,
+    "',
+    'border-color': '",
+    color,
+    "'});"
+  )
 }
-depSub <- function(a){
+
+
+jsButtonColor2 <- function(color, value) {
+  # Makes simple js code to color buttons in shinyWidgets library. From:
+  # https://github.com/dreamRs/shinyWidgets/issues/41
+  # var, color and yes/no need to be in quotes
+  paste0(
+    "$(\"input:radio[value='",
+    paste0(value),
+    "']\").parent().css('background-color', '",
+    color,
+    "');"
+  )
+}
+
+depSub <- function(a) {
   # shortcut helper n
   deparse(substitute(a))
 }
 
-evPar <- function(x){
+evPar <- function(x) {
   # short helper fun
   eval(parse(text = x))
 }
