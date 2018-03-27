@@ -12,9 +12,7 @@ jsButtonColor <- function(var, color, value) {
     "']\").parent().css({'background-color': '",
     color,
     "',
-    'border-color': '",
-    color,
-    "'});"
+    'border-color': '#FAFAFA'});"
   )
 }
 

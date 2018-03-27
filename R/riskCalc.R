@@ -201,16 +201,7 @@ riskCalc <- function() {
           br(),
           br(),
           div(id = "references", references),
-          hr(),
-          br(),
-          tags$h4((
-            "Table below only for testing - will not be included in final version"
-          )
-          ),
-          br(),
-          br(),
-          br(),
-          DT::dataTableOutput("table")
+          hr()
         )
       )
     ),
@@ -262,7 +253,7 @@ riskCalc <- function() {
                                vascular %in% eval(input_parse[["vasc"]]),
                              c(3,7, 10)]
 
-          browser()
+          # browser()
           one.value <- dat.sub[2] - dat.sub[1] < 0.001
           if (one.value) {
             paste0(dat.sub[1], "%")

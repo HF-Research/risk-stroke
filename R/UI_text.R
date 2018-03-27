@@ -17,7 +17,7 @@ in_diab <- "Has patient ever had diabetes"
 in_vasc <- "Has patient ever had vascular disease"
 
 # Must be in quotedt pixels (px), e.g.: "100px"
-in_txt_size <-
+in_txt_size <- "14px"
 
 
 # OUTPUT TEXT -------------------------------------------------------------
