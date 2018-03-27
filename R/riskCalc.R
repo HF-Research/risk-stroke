@@ -50,7 +50,9 @@ riskCalc <- function(){
         tags$style(type = "text/css", "#input_col {max-width:380px;}"), #max width input
         tags$style(type = "text/css", ".container-fluid {margin:auto; max-width: 1000px}"),
         tags$style("#user_age {font-size:38px;height:50px; width: 110px;}"), # font size
-        tags$style(paste0("#stroke_results_text {font-size:", out_stroke_text_size, "}")) # font size
+        tags$style(paste0("#stroke_results_text {font-size:", out_stroke_text_size, "}")),
+        tags$style(paste0("#out_intro {font-size:", out_intro_size, "}")),
+        tags$style(paste0("#references {font-size:", references_size, "}")) # font size
       ),
       # Sidebar with a slider input for number of bins
       fluidRow(
@@ -147,21 +149,25 @@ riskCalc <- function(){
         # Show a plot of the generated distribution
         column(id = "results",
                6,
+               div(id = "out_intro", out_intro),
+               br(),
                div(id = "stroke_results_text", out_stroke),
                tags$h2(strong(textOutput("strokeRisk"))),
-               br(),
-               tags$h2(out_thomb),
-               tags$h2(strong(textOutput("thromb1y"))),
+               div(id = "out_stroke_details", out_stroke_details),
                br(),
                br(),
                br(),
                br(),
                br(),
                br(),
+               br(),
+               div(id = "references", references),
                hr(),
                br(),
                tags$h4(("Table below only for testing - will not be included in final version")
                ),
+               br(),
+               br(),
                br(),
                DT::dataTableOutput("table")
         )
@@ -212,42 +218,7 @@ riskCalc <- function(){
 
       })
 
-      output$thromb1y <- renderText({
 
-        # Order of subset arguments must be same order as new.col.order variable set in
-        # intro.
-        # browser()
-        age_as_number <- txt2num()
-        if (is.valid.age(age_as_number)) {
-          # browser()
-
-
-          dat.sub <- stroke.dt[age == age_as_number &
-                                 female %in% evPar(input$sex) &
-                                 stroke %in% evPar(input$stroke) &
-                                 heartfailure %in% evPar(input$hf) &
-                                 diabetes %in% evPar(input$diabetes) &
-                                 hypertension %in% evPar(input$hyperT) &
-                                 vascular %in% evPar(input$vasc),
-                               range(thromb1y)]
-
-          one.value <- dat.sub[2] - dat.sub[1] < 0.001
-          if (one.value) {
-            paste0(dat.sub[1], "%")
-          } else if (!one.value) {
-            paste0("between ", dat.sub[1],
-                   "%", " and ",
-                   dat.sub[2],
-                   "%")
-          }
-
-
-        }
-        else {
-          paste0("Please enter a whole number between 20 - 99")
-        }
-
-      })
 
       output$table <- DT::renderDataTable(
         DT::datatable(filter = "none",
