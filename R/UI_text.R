@@ -25,7 +25,7 @@ out_intro <- "Intro header"
 out_intro_size <- "24px"
 
 out_stroke <- "1-year stroke risk is estimated to be:"
-out_stroke_text_size <- "32px"
+out_stroke_text_size <- "30px"
 
 out_stroke_details <- "This number gives the risk of stroke over 1-year for patients
 {describe patients here]. This estimate is based on X number of patients who had similar covariates"
