@@ -36,7 +36,7 @@ for their atrial fibrillation (1).
 The calculator uses the same risk factors as the CHA2DS2-VASc score (2) recommended in the latest European/American guidelines
 to guide the need for anticoagulation for patients with atrial fibrillation (3-4).
 
-The main differeces are the following:
+The main differences are the following:
 - Age is included as a continuous variable
 - The overall risk calculation takes into account not a sum of risk factors, but their individual contribution.
 " #This estimate is based on X number of patients who had similar covariates
@@ -56,9 +56,8 @@ J Am Coll Cardiol. 2. December 2014;64(21):2246–80.
 Refining clinical risk stratification for predicting stroke and thromboembolism in atrial fibrillation using a novel risk factor-based approach: the euro heart survey on atrial fibrillation.
 Chest. February 2010;137(2):263–72.
 "
-
 references_size <- "12px"
 
 # Text that appears when user has not entered an appropriate age (i.e. <20 ||
 # >99 || not a whole number)
-enter_age <- "Please enter a whole number (years of age) between 20 - 99 "
+enter_age <- " "#"Please enter a whole number (years of age) between 20 - 99 "
