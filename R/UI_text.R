@@ -71,4 +71,4 @@ ref4_size<- "12px"
 
 # Text that appears when user has not entered an appropriate age (i.e. <20 ||
 # >99 || not a whole number)
-enter_age <- " "#"Please enter a whole number (years of age) between 20 - 99 "
+enter_age <- "Please enter a whole number (years of age) between 20 - 99"
