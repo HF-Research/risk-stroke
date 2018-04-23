@@ -64,19 +64,20 @@ riskCalc <- function() {
         # tags$style(type = "text/css", ".well {min-width: 350px}"),
         tags$style("#user_age {font-size:38px;height:50px; width: 110px;}"),
         # font size
-        tags$style(
-          paste0(
-            "#stroke_results_text {font-size:",
-            out_stroke_text_size,
-            "}"
-          )
-        ),
         tags$style(paste0(
-          "#out_intro {font-size:", out_intro_size, "}"
-        )),
+            "#stroke_results_text {font-size:",out_stroke_text_size, "}")),
         tags$style(paste0(
-          "#references {font-size:", references_size, "}"
-        )) # font size
+          "#out_intro {font-size:", out_intro_size, "}")),
+        tags$style(paste0(
+          "#ref1 {font-size:", ref1_size, "}")),
+        tags$style(paste0(
+          "#ref2 {font-size:", ref2_size, "}")),
+        tags$style(paste0(
+          "#ref3 {font-size:", ref3_size, "}")),
+        tags$style(paste0(
+          "#ref4 {font-size:", ref4_size, "}")),
+        tags$style(paste0(
+          "#references {font-size:", references_size, "}")) # font size
       ),
       # Sidebar with a slider input for number of bins
       fluidRow(
@@ -200,13 +201,14 @@ riskCalc <- function() {
           tags$h2(strong(textOutput("strokeRisk"))),
           div(id = "out_stroke_details", out_stroke_details),
           br(),
-          br(),
-          br(),
-          br(),
-          br(),
+          div(id = "out_stroke_details2", out_stroke_details2),
           br(),
           br(),
           div(id = "references", references),
+          div(id = "ref1", ref1),
+          div(id = "ref2", ref2),
+          div(id = "ref3", ref3),
+          div(id = "ref4", ref4),
           hr()
         )
       )
