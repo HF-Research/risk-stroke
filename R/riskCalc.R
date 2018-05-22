@@ -69,13 +69,13 @@ riskCalc <- function() {
         tags$style(paste0(
           "#out_intro {font-size:", out_intro_size, "}")),
         tags$style(paste0(
-          "#ref1 {font-size:", ref1_size, "}")),
+          "#ref1 {font-size:", ref_size, "}")),
         tags$style(paste0(
-          "#ref2 {font-size:", ref2_size, "}")),
+          "#ref2 {font-size:", ref_size, "}")),
         tags$style(paste0(
-          "#ref3 {font-size:", ref3_size, "}")),
+          "#ref3 {font-size:", ref_size, "}")),
         tags$style(paste0(
-          "#ref4 {font-size:", ref4_size, "}")),
+          "#ref4 {font-size:", ref_size, "}")),
         tags$style(paste0(
           "#references {font-size:", references_size, "}")) # font size
       ),
