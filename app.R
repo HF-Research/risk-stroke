@@ -160,21 +160,8 @@ ui <- fluidPage(
 
         # Do not know how to ofload this into a JS file when putting the
         # shiny app in a R package
-        tags$script(jsButtonColor("sex", "#81C784", "no")),
-        tags$script(jsButtonColor("stroke", "#81C784", "no")),
-        tags$script(jsButtonColor("hf", "#81C784", "no")),
-        tags$script(jsButtonColor("diabetes", "#81C784", "no")),
-        tags$script(jsButtonColor("hyperT", "#81C784", "no")),
-        tags$script(jsButtonColor("vasc", "#81C784", "no")),
-
-        tags$script(jsButtonColor("sex", "#E57373", "yes")),
-        tags$script(jsButtonColor("stroke", "#E57373", "yes")),
-        tags$script(jsButtonColor("hf", "#E57373", "yes")),
-        tags$script(jsButtonColor("diabetes", "#E57373", "yes")),
-        tags$script(jsButtonColor("hyperT", "#E57373", "yes")),
-        tags$script(jsButtonColor("vasc", "#E57373", "yes")),
-
-        tags$script(jsButtonColor2("#F5F5F5", "c(no, yes)"))
+        tags$script(jsButtonSelectionColor(active = FALSE, "#FFFFFF")),
+        tags$script(jsButtonSelectionColor(active = TRUE, "#81C784"))
 
 
 

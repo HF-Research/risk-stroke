@@ -1,4 +1,17 @@
 # Helper functions
+jsButtonSelectionColor <- function(active = TRUE, color){
+  # Colors active or non-active buttons in shinyWidgets library
+  if (active) {
+    paste0("$('.btn.radiobtn.btn-default.active').css({'background-color':'",
+         color,
+         "'});")
+  }
+  else {
+    paste0("$('.btn.radiobtn.btn-default').css({'background-color':'",
+           color,
+           "'});")
+    }
+}
 
 jsButtonColor <- function(var, color, value) {
   # Makes simple js code to color buttons in shinyWidgets library. From:
