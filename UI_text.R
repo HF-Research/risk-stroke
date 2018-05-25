@@ -24,7 +24,7 @@ in_txt_size <- "14px"
 out_intro <- " " #"CARS - The Calculator of Absolute Stroke Risk"
 out_intro_size <- "0px"
 
-out_stroke <- "The 1-year risk of stroke and thromboembolism is estimated to be:"
+out_stroke <- "The average 1-year risk of stroke and thromboembolism:"
 out_stroke_text_size <- "24px"
 
 out_stroke_details <- "

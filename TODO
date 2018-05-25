@@ -1,4 +1,19 @@
 TODO list, CARS:
-- Add number of patients for each covariate combination
-- Decide default value for buttons
--
+
+- Sex default unselected
+- Add descriptor of covariates - as smaller text always visibile
+
+- change colors to be on/off, not red/green
+- Bigger font for covariates
+- try and keep all choices on mobile screen
+- Christina to make Danish version
+- Questionnaire for test users
+- Reduce font size of subtitle - move para down
+- Make CARS bold
+- Add result in colored box
+
+- If have time - add graph showing relation to CHADVASC
+
+Decisions made
+- do not add CI or patient numbers - because this would not be useful in helping clinicians/patients make decisions
+- Christina send R code for forest plot of CHADVASC
