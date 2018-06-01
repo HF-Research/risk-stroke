@@ -55,7 +55,9 @@ ui <- fluidPage(
 
   # Give CSS styles to selected elements
   tags$head(
-    tags$style(".btn.radiobtn.btn-default.active {background-color:#81C784;}"),
+    tags$style(".btn.radiobtn.btn-default.active {background-color:#337ab7;
+               border-color:#337ab7;
+               font-weight:bold;}"),
     tags$style(type = "text/css", "#results {max-width:620px;}"),
     tags$style(type = "text/css", "#input_col {max-width:380px;}"),
     #max width input
