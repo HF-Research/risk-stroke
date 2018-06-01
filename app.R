@@ -55,6 +55,7 @@ ui <- fluidPage(
 
   # Give CSS styles to selected elements
   tags$head(
+    tags$style(".btn.radiobtn.btn-default.active {background-color:#81C784;}"),
     tags$style(type = "text/css", "#results {max-width:620px;}"),
     tags$style(type = "text/css", "#input_col {max-width:380px;}"),
     #max width input
@@ -156,12 +157,12 @@ ui <- fluidPage(
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
-        ),
+        )
 
         # Do not know how to ofload this into a JS file when putting the
-        # shiny app in a R package
-        tags$script(jsButtonSelectionColor(active = FALSE, "#FFFFFF")),
-        tags$script(jsButtonSelectionColor(active = TRUE, "#81C784"))
+        # # shiny app in a R package
+        # tags$script(jsButtonSelectionColor(active = FALSE, "#FFFFFF")),
+        # tags$script(jsButtonSelectionColor(active = TRUE, "#81C784"))
 
 
 
@@ -211,7 +212,7 @@ server <- function(input, output) {
       paste0(enter_age)
 
     } else {
-      browser()
+      # browser()
       dat.sub <- stroke.dt[age == age_as_number &
                              female %in% input$sex &
                              stroke %in% input$stroke &
