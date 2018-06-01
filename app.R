@@ -93,11 +93,11 @@ ui <- fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "sex",
           label = in_sex,
-          choices = c("Male" = depSub(no),
-                      "Female" = depSub(yes)
+          choices = c("Male" = "no",
+                      "Female" = "yes"
           ),
           checkIcon = list(yes = icon("check")),
-          selected =  depSub(no),
+          selected =  "no",
           justified = TRUE,
           width = button.width
         ),
@@ -106,9 +106,9 @@ ui <- fluidPage(
           inputId = "stroke",
           label = in_stroke,
           choiceNames = c("No", "Yes"),
-          selected =  depSub(no),
-          choiceValues = c(depSub(no),
-                           depSub(yes)),
+          selected =  "no",
+          choiceValues = c("no",
+                           "yes"),
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
@@ -117,9 +117,9 @@ ui <- fluidPage(
           inputId = "hf",
           label = in_hf,
           choiceNames = c("No", "Yes"),
-          selected =  depSub(no),
-          choiceValues = c(depSub(no),
-                           depSub(yes)),
+          selected =  ("no"),
+          choiceValues = c("no",
+                           "yes"),
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
@@ -128,9 +128,9 @@ ui <- fluidPage(
           inputId = "diabetes",
           label = in_diab,
           choiceNames = c("No", "Yes"),
-          selected =  depSub(no),
-          choiceValues = c(depSub(no),
-                           depSub(yes)),
+          selected =  ("no"),
+          choiceValues = c("no",
+                           "yes"),
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
@@ -139,9 +139,9 @@ ui <- fluidPage(
           inputId = "hyperT",
           label = in_hyperT,
           choiceNames = c("No", "Yes"),
-          selected =  depSub(no),
-          choiceValues = c(depSub(no),
-                           depSub(yes)),
+          selected =  ("no"),
+          choiceValues = c("no",
+                           "yes"),
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
@@ -150,9 +150,9 @@ ui <- fluidPage(
           inputId = "vasc",
           label = in_vasc,
           choiceNames = c("No", "Yes"),
-          selected =  depSub(no),
-          choiceValues = c(depSub(no),
-                           depSub(yes)),
+          selected =  ("no"),
+          choiceValues = c("no",
+                           "yes"),
           checkIcon = list(yes = icon("check")),
           justified = TRUE,
           width = button.width
@@ -199,6 +199,9 @@ server <- function(input, output) {
     as.numeric(input$user_age)
   })
 
+  # observe({
+  #   shinyjs::toggleClass("myapp", "big", input$hyperT=="yes")
+  # })
   output$strokeRisk <- renderText({
     # Order of subset arguments must be same order as new.col.order variable set in
     # intro.
@@ -206,37 +209,25 @@ server <- function(input, output) {
     age_as_number <- txt2num()
     if (!is.valid.age(age_as_number)) {
       paste0(enter_age)
-    } else {
-      # browser()
-      input_parse <- list()
-      for (i in input_id_vec[2:length(input_id_vec)]) {
-        input_parse[[i]] <- parse(text = input[[i]])
-        if (length(input_parse[[i]][[1]]) == 3) {
-          input_parse[[i]][[1]][[2]] <- "no"
-          input_parse[[i]][[1]][[3]] <- "yes"
-        } else if (input_parse[[i]][[1]] == "no") {
-          input_parse[[i]][[1]] <- "no"
-        } else {
-          input_parse[[i]][[1]] <- "yes"
-        }
-      }
 
+    } else {
+      browser()
       dat.sub <- stroke.dt[age == age_as_number &
-                             female %in% eval(input_parse[["sex"]]) &
-                             stroke %in% eval(input_parse[["stroke"]]) &
-                             heartfailure %in% eval(input_parse[["hf"]]) &
-                             diabetes %in% eval(input_parse[["diabetes"]]) &
-                             hypertension %in% eval(input_parse[["hyperT"]]) &
-                             vascular %in% eval(input_parse[["vasc"]]),
+                             female %in% input$sex &
+                             stroke %in% input$stroke &
+                             heartfailure %in% input$hf &
+                             diabetes %in% input$diabetes &
+                             hypertension %in% input$hyperT &
+                             vascular %in% input$vasc,
                            range(stroke1y)]
 
       test  <- stroke.dt[age == age_as_number &
-                           female %in% eval(input_parse[["sex"]]) &
-                           stroke %in% eval(input_parse[["stroke"]]) &
-                           heartfailure %in% eval(input_parse[["hf"]]) &
-                           diabetes %in% eval(input_parse[["diabetes"]]) &
-                           hypertension %in% eval(input_parse[["hyperT"]]) &
-                           vascular %in% eval(input_parse[["vasc"]]),
+                           female %in% input$sex &
+                           stroke %in% input$stroke &
+                           heartfailure %in% input$hf &
+                           diabetes %in% input$diabetes &
+                           hypertension %in% input$hyperT &
+                           vascular %in% input$vasc,
                          c(3,7, 10)]
 
       # browser()
