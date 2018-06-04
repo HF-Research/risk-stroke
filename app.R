@@ -49,44 +49,36 @@ button.width <- "320px"
 ui <- fluidPage(
   # Application title
   # shinythemes::themeSelector(),
-
   titlePanel(title_txt),
   theme = shinythemes::shinytheme(theme = "yeti"),
 
-  # Give CSS styles to selected elements
+
   tags$head(
-    tags$style(".btn.radiobtn.btn-default.active {background-color:#337ab7;
-               border-color:#337ab7;
-               font-weight:bold;}"),
-    tags$style(type = "text/css", "#results {max-width:620px;}"),
-    tags$style(type = "text/css", "#input_col {max-width:380px;}"),
-    #max width input
-    tags$style(type = "text/css", ".container-fluid {margin:auto; max-width: 1000px}"),
-    # tags$style(type = "text/css", ".well {min-width: 350px}"),
-    tags$style("#user_age {font-size:38px;height:50px; width: 110px;}"),
-    # font size
+    # Main styling is in CSS file:
+    tags$link(rel = "stylesheet", type = "text/css", href = "cars-style.css"),
+
+
+    # Styling that's linked to UI_text file goes here:
+    tags$style(
+      paste0("#stroke_results_text {font-size:", out_stroke_text_size, "}")
+    ),
     tags$style(paste0(
-      "#stroke_results_text {font-size:",out_stroke_text_size, "}")),
+      "#out_intro {font-size:", out_intro_size, "}"
+    )),
+    tags$style(paste0(".ref {font-size:", ref_size, "}")),
     tags$style(paste0(
-      "#out_intro {font-size:", out_intro_size, "}")),
-    tags$style(paste0(
-      "#ref1 {font-size:", ref_size, "}")),
-    tags$style(paste0(
-      "#ref2 {font-size:", ref_size, "}")),
-    tags$style(paste0(
-      "#ref3 {font-size:", ref_size, "}")),
-    tags$style(paste0(
-      "#ref4 {font-size:", ref_size, "}")),
-    tags$style(paste0(
-      "#references {font-size:", references_size, "}")) # font size
-  ),
-  # Sidebar with a slider input for number of bins
+      "#references {font-size:", references_size, "}"
+    )) # font size
+    ),
+
+
   fluidRow(
+    # Input column
     column(
       id = "input_col",
       6,
-      # toggleClass("column_id", "custom_class")
       wellPanel(
+        style = "background-color:white;",
         textInput(
           inputId = "user_age",
           label = in_age,
@@ -97,8 +89,7 @@ ui <- fluidPage(
           inputId = "sex",
           label = in_sex,
           choices = c("Male" = "no",
-                      "Female" = "yes"
-          ),
+                      "Female" = "yes"),
           checkIcon = list(yes = icon("check")),
           selected =  "no",
           justified = TRUE,
@@ -160,40 +151,34 @@ ui <- fluidPage(
           justified = TRUE,
           width = button.width
         )
-
-        # Do not know how to ofload this into a JS file when putting the
-        # # shiny app in a R package
-        # tags$script(jsButtonSelectionColor(active = FALSE, "#FFFFFF")),
-        # tags$script(jsButtonSelectionColor(active = TRUE, "#81C784"))
-
-
-
-
       )
     ),
 
-    # Show a plot of the generated distribution
+    # Results column:
     column(
       id = "results",
       6,
-      div(id = "out_intro", out_intro),
-      br(),
-      div(id = "stroke_results_text", out_stroke),
-      tags$h2(strong(textOutput("strokeRisk"))),
+      fluidRow(wellPanel(
+        style = "background-color:white;",
+        div(id = "out_intro", out_intro),
+        br(),
+        div(id = "stroke_results_text", out_stroke),
+        tags$h2(strong(textOutput("strokeRisk")))
+      )),
       div(id = "out_stroke_details", out_stroke_details),
       br(),
       div(id = "out_stroke_details2", out_stroke_details2),
       br(),
       br(),
       div(id = "references", references),
-      div(id = "ref1", ref1),
-      div(id = "ref2", ref2),
-      div(id = "ref3", ref3),
-      div(id = "ref4", ref4),
+      div(class = "ref", ref1),
+      div(class = "ref", ref2),
+      div(class = "ref", ref3),
+      div(class = "ref", ref4),
       hr()
     )
   )
-)
+  )
 
 
 # SERVER ------------------------------------------------------------------
@@ -231,7 +216,7 @@ server <- function(input, output) {
                            diabetes %in% input$diabetes &
                            hypertension %in% input$hyperT &
                            vascular %in% input$vasc,
-                         c(3,7, 10)]
+                         c(3, 7, 10)]
 
       # browser()
       one.value <- dat.sub[2] - dat.sub[1] < 0.001
