@@ -62,12 +62,6 @@ ui <- fluidPage(
 
 
     # Styling that's linked to UI_text file goes here:
-    tags$style(
-      paste0("#stroke_results_text {font-size:", out_stroke_text_size, "}")
-    ),
-    tags$style(paste0(
-      "#out_intro {font-size:", out_intro_size, "}"
-    )),
     tags$style(paste0(".ref {font-size:", ref_size, "}")),
     tags$style(paste0(
       "#references {font-size:", references_size, "}"
@@ -172,7 +166,7 @@ ui <- fluidPage(
         # div(id = "out_intro", out_intro),
         br(),
         div(id = "stroke_results_text", out_stroke),
-        tags$h2(strong(textOutput("strokeRisk")))
+        tags$h1(strong(textOutput("strokeRisk")))
       )),
       div(class = "out_stroke_details", out_stroke_details),
       br(),

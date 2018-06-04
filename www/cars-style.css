@@ -142,8 +142,8 @@ input[type="month"] {
 }
 
 .row{
-  margin-left:1px;
-  margin-right:1px;
+  margin-left:-5px;
+  margin-right:-5px;
 }
 .out_stroke_details{
   font-size:16px;}
@@ -159,6 +159,8 @@ input[type="month"] {
   height:50px;
   width: 110px;
   background-color:#f9f9f9;
+  line-height:50px;
+
 }
 
 #input_col {
@@ -170,6 +172,11 @@ input[type="month"] {
 #results_title {
  font-size: 38px;
  font-weight: bold;
+}
+
+#stroke_results_text{
+  font-size: 26px;
+
 }
 
 #results {
