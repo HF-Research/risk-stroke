@@ -4,42 +4,50 @@
 # Var names should not contain "." due to conflicts with JavaScript
 
 # TITLE -------------------------------------------------------------------
-title_txt <- "CARS - The Calculator of Absolute Stroke Risk"
+title_txt <- "CARS"
+subtitle_txt <- "Calculator of Absolute Stroke Risk"
 
 
 # INPUT UI ------------------------------------------------------------------
 in_age <- "Age of patient, choose between 20-99 years"
 in_sex <- "Patient's sex"
+
 in_stroke <- "Previous stroke/TCI/thromboembolism"
 in_hf <- "Heart failure"
 in_hyperT <- "Hypertension"
 in_diab <- "Diabetes mellitus"
 in_vasc <- "Vascular disease (Prior myocardial infarction, peripheral artery disease)"
 
+
+help_stroke <- "Previous stroke / Transient Ischemic attack / thromboembolism"
+help_hf <- "Congestive heart failure/ Left ventricular dysfunction"
+help_hyperT <- "Treatment with antihypertensive drugs or resting sBP >= 140mmHg and/or
+dBP>=90mmHg"
+help_diab <- "Treatment with oral hypoglycemic drugs or Glycated hemoglobin
+(HbA1C) ≥ 48 mmol/mol (≥ 6.5 DCCT %)"
+help_vasc <- "Prior myocardial infarction, peripheral artery disease"
 # Must be in quotedt pixels (px), e.g.: "100px"
 in_txt_size <- "14px"
 
 
 # OUTPUT TEXT -------------------------------------------------------------
-out_intro <- " " #"CARS - The Calculator of Absolute Stroke Risk"
-out_intro_size <- "0px"
 
+results_title <- "RESULTS"
 out_stroke <- "The average 1-year risk of stroke and thromboembolism:"
-out_stroke_text_size <- "24px"
 
 out_stroke_details <- "
 CARS calculates the absolute 1-year risk of stroke and thromboembolism for patients
 with atrial fibrillation and not receiving anticoagulation.
 The calculator is based on a large cohort of Danish patients admitted first time to the hospital
 for their atrial fibrillation (1)."
-out_stroke_details_size <- "14px"
+
 
 out_stroke_details2 <- "
 The calculator uses the same risk factors as the CHA2DS2-VASc score (2) recommended in the latest European/American guidelines
 to guide the need for anticoagulation for patients with atrial fibrillation (3-4).
-The main differences are the following:
-- Age is included as a continuous variable
-- The overall risk calculation takes into account not a sum of risk factors, but their individual contribution."
+The main differences are the following:"
+out_details_list1 <- "Age is included as a continuous variable"
+out_details_list2 <- "The overall risk calculation takes into account not a sum of risk factors, but their individual contribution."
 #This estimate is based on X number of patients who had similar covariates
 out_stroke_details2_size <- "14px"
 
