@@ -44,17 +44,20 @@ input_id_vec <- c("user_age",
                   "hyperT",
                   "vasc")
 
-button.width <- "320px"
+button.width <- "260px"
 
 ui <- fluidPage(
   # Application title
-  # shinythemes::themeSelector(),
-  titlePanel(title_txt),
-  theme = shinythemes::shinytheme(theme = "yeti"),
+  h1(title_txt),
+  h4(subtitle_txt),
+  br(),
+  # theme = shinythemes::shinytheme(theme = "yeti"),
 
 
   tags$head(
     # Main styling is in CSS file:
+    # tags$link(rel = "stylesheet", type = "text/css", href = "bootswatch-yeti.css"),
+    # tags$link(rel = "stylesheet", type = "text/css", href = "materia.css"),
     tags$link(rel = "stylesheet", type = "text/css", href = "cars-style.css"),
 
 
@@ -78,7 +81,6 @@ ui <- fluidPage(
       id = "input_col",
       6,
       wellPanel(
-        style = "background-color:white;",
         textInput(
           inputId = "user_age",
           label = in_age,
@@ -92,8 +94,9 @@ ui <- fluidPage(
                       "Female" = "yes"),
           checkIcon = list(yes = icon("check")),
           selected =  "no",
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         ),
 
         shinyWidgets::radioGroupButtons(
@@ -104,8 +107,9 @@ ui <- fluidPage(
           choiceValues = c("no",
                            "yes"),
           checkIcon = list(yes = icon("check")),
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         ),
         shinyWidgets::radioGroupButtons(
           inputId = "hf",
@@ -115,8 +119,9 @@ ui <- fluidPage(
           choiceValues = c("no",
                            "yes"),
           checkIcon = list(yes = icon("check")),
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         ),
         shinyWidgets::radioGroupButtons(
           inputId = "diabetes",
@@ -126,8 +131,9 @@ ui <- fluidPage(
           choiceValues = c("no",
                            "yes"),
           checkIcon = list(yes = icon("check")),
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         ),
         shinyWidgets::radioGroupButtons(
           inputId = "hyperT",
@@ -137,8 +143,9 @@ ui <- fluidPage(
           choiceValues = c("no",
                            "yes"),
           checkIcon = list(yes = icon("check")),
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         ),
         shinyWidgets::radioGroupButtons(
           inputId = "vasc",
@@ -148,8 +155,9 @@ ui <- fluidPage(
           choiceValues = c("no",
                            "yes"),
           checkIcon = list(yes = icon("check")),
-          justified = TRUE,
-          width = button.width
+          # width = button.width,
+          justified = TRUE
+
         )
       )
     ),
@@ -159,23 +167,28 @@ ui <- fluidPage(
       id = "results",
       6,
       fluidRow(wellPanel(
-        style = "background-color:white;",
-        div(id = "out_intro", out_intro),
+        id = "results_well",
+        div(id = "results_title", results_title),
+        # div(id = "out_intro", out_intro),
         br(),
         div(id = "stroke_results_text", out_stroke),
         tags$h2(strong(textOutput("strokeRisk")))
       )),
-      div(id = "out_stroke_details", out_stroke_details),
+      div(class = "out_stroke_details", out_stroke_details),
       br(),
-      div(id = "out_stroke_details2", out_stroke_details2),
+      div(class = "out_stroke_details", out_stroke_details2),
+      tags$ul(class = "out_stroke_details",
+              tags$li(out_details_list1),
+              tags$li(out_details_list2)
+      ),
       br(),
       br(),
+      hr(),
       div(id = "references", references),
       div(class = "ref", ref1),
       div(class = "ref", ref2),
       div(class = "ref", ref3),
-      div(class = "ref", ref4),
-      hr()
+      div(class = "ref", ref4)
     )
   )
   )
@@ -187,9 +200,6 @@ server <- function(input, output) {
     as.numeric(input$user_age)
   })
 
-  # observe({
-  #   shinyjs::toggleClass("myapp", "big", input$hyperT=="yes")
-  # })
   output$strokeRisk <- renderText({
     # Order of subset arguments must be same order as new.col.order variable set in
     # intro.
@@ -218,7 +228,6 @@ server <- function(input, output) {
                            vascular %in% input$vasc,
                          c(3, 7, 10)]
 
-      # browser()
       one.value <- dat.sub[2] - dat.sub[1] < 0.001
       if (one.value) {
         paste0(dat.sub[1], "%")
