@@ -1,2 +1,5 @@
-DisplayMode: showcase
-
+Title: CARS
+Author: Matthew Phelps
+License: GPL3
+DisplayMode: Showcase
+Type: Shiny

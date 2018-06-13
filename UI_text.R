@@ -39,14 +39,14 @@ help_vasc <-
 
 results_title <- "2. RESULTS"
 out_stroke <-
-  "The risk of having a stroke and thromboembolism within one-year following
+  "The risk of having a stroke and thromboembolism within one year following
 atrial fibrillation diagnosis is:"
 
 out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
 factors would experience a stroke within the year following diagnisis"
 out_strokeLessOne <- "This means that <1 out of every 1000 patients with the same
-risk factors would experience a stroke within the year following diagnosis"
+risk factors would experience a stroke within one year following diagnosis"
 
 out_stroke_details <- "
 CARS calculates the absolute 1-year risk of stroke and thromboembolism for patients
