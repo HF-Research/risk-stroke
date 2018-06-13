@@ -1,3 +1,5 @@
+/*Copied from bootstrop page */
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400 300,700");
 :root {
   --blue: #008cba;
@@ -28,6 +30,7 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-size: 16px;
 }
 
 body {
@@ -100,12 +103,21 @@ input[type="month"] {
   -webkit-appearance: listbox;
 }
 
+/*END COPY FROM BOOTSTRAP */
+
+label{
+  font-size:1.5rem;
+  font-weight: 600;
+  margin-bottom:0px;
+  margin-top:5px;
+}
 
 .btn.radiobtn.btn-default.active {
-  background-color:#337ab7;
+  background-color:#1976D2 ;
   border-color:#337ab7;
   font-weight:bold;
   color:white;
+  font-size: 1.5rem;
 }
 
 .btn.radiobtn.btn-default {
@@ -118,6 +130,8 @@ input[type="month"] {
   background-color: #e8e3e3;
   border-color: #bcbaba;
   color:black;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .btn.radiobtn.btn-default.active:hover {
@@ -125,14 +139,12 @@ input[type="month"] {
   border-color:#337ab7;
   font-weight:bold;
   color:white;
+  font-size: 1.5rem;
 }
-
-
-
 
 .container-fluid {
   margin:auto;
-  max-width: 1000px
+  max-width: 1060px
 }
 
 .well{
@@ -145,20 +157,39 @@ input[type="month"] {
   margin-left:-5px;
   margin-right:-5px;
 }
+
+.output_desc {
+  line-height: 1.2;
+  font-size: 26px;
+
+}
+
 .out_stroke_details{
-  font-size:16px;}
+  font-size:1.6rem;
+}
+.ref{
+  font-size: 1.2rem;}
+
+#input_title{
+font-size:3.5rem;
+font-weight:600;
+
+}
 
 #user_age {
-  font-size:34px;
+  font-size:3.5rem;
   height:50px;
   width: 110px;
+  background-color:#efefef;
+  border-color:#efefef;
 }
 
 #user_age:hover {
-  font-size:36px;
+  font-size:3.7rem;
   height:50px;
   width: 110px;
-  background-color:#f9f9f9;
+  background-color:#e8e3e3;
+  border-color:#e8e3e3;
   line-height:50px;
 
 }
@@ -169,28 +200,22 @@ input[type="month"] {
   margin-right: auto;
 }
 
+
 #results_title {
  font-size: 38px;
  font-weight: bold;
 }
 
-#stroke_results_text{
-  font-size: 26px;
-
-}
 
 #results {
-  max-width:620px;
+  max-width:650px;
   margin-left: auto;
   margin-right: auto;
 
 }
 
 #results_well {
-  background-color:#ade1f4;
+  background-color:#BBDEFB;
   margin-left: auto;
   margin-right: auto;
 }
-
-
-
