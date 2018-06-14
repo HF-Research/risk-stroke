@@ -21,12 +21,6 @@ in_vasc <-
   "Vascular disease (Prior myocardial infarction, peripheral artery disease)"
 
 
-# Bleeding variables
-in_bleed <- "Previous major bleeding"
-in_ckd <- "Abnormal renal or liver function"
-in_drug <- "Drug or alcohol abuse"
-
-
 help_stroke <-
   "Previous stroke / Transient Ischemic attack / thromboembolism"
 help_hf <- "Congestive heart failure/ Left ventricular dysfunction"
@@ -41,44 +35,22 @@ help_vasc <-
 # Must be in quotedt pixels (px), e.g.: "100px"
 
 
-# STROKE RESULTS ----------------------------------------------------------
+# OUTPUT TEXT -------------------------------------------------------------
 
-
-results_stroke_title <- "2. STROKE RISK"
+results_title <- "2. RESULTS"
 out_stroke <-
   "The risk of having a stroke and thromboembolism within one year following
-atrial fibrillation (AF) diagnosis, for patients who do not receive
-anticoagulation treatment is:"
+atrial fibrillation diagnosis is:"
 
 out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
 factors would experience a stroke within the year following diagnisis"
-out_strokeLessOne <-
-  "This means that <1 out of every 1000 patients with the same
+out_strokeLessOne <- "This means that <1 out of every 1000 patients with the same
 risk factors would experience a stroke within one year following diagnosis"
 
-
-
-# BLEEDING RESULTS --------------------------------------------------------
-
-results_bleeding_title <- "3. BLEEDING RISK"
-out_bleeding1 <-
-  "The risk of having a major bleeding event within one year
-following AF diagnosis is:"
-
-out_bleeding2 <- "This means that "
-out_bleeding3 <- " out of 1000 patients with the same risk
-factors would experience a major bleeding event within the year following diagnisis"
-out_bleedingLessOne <-
-  "This means that <1 out of every 1000 patients with the same risk factors
-would experience a major bleeding event within one year following diagnosis"
-
-
-# DESCRIPTIONS ------------------------------------------------------------
-
 out_stroke_details <- "
-CARS calculates the absolute risk of stroke and thromboembolism in the first year following
-for patients diagnosis with atrial fibrillation and not receiving anticoagulation.
+CARS calculates the absolute 1-year risk of stroke and thromboembolism for patients
+with atrial fibrillation and not receiving anticoagulation.
 The calculator is based on a large cohort of Danish patients admitted first time to the hospital
 for their atrial fibrillation [1]."
 
@@ -90,8 +62,8 @@ The main differences are the following:"
 out_details_list1 <- "Age is included as a continuous variable"
 out_details_list2 <-
   "The overall risk calculation takes into account not a sum of risk factors, but their individual contribution."
-
-
+#This estimate is based on X number of patients who had similar covariates
+out_stroke_details2_size <- "14px"
 
 references <- "References:"
 references_size <- "12px"

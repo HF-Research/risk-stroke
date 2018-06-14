@@ -158,14 +158,9 @@ label{
   margin-right:-5px;
 }
 
-.titles {
- font-size: 3.4rem;
- font-weight: bold;
-}
-
 .output_desc {
   line-height: 1.2;
-  font-size: 2.1rem;
+  font-size: 26px;
 
 }
 
@@ -175,6 +170,11 @@ label{
 .ref{
   font-size: 1.2rem;}
 
+#input_title{
+font-size:3.5rem;
+font-weight:600;
+
+}
 
 #user_age {
   font-size:3.5rem;
@@ -200,6 +200,13 @@ label{
   margin-right: auto;
 }
 
+
+#results_title {
+ font-size: 38px;
+ font-weight: bold;
+}
+
+
 #results {
   max-width:650px;
   margin-left: auto;
@@ -207,14 +214,8 @@ label{
 
 }
 
-#results_stroke_well {
+#results_well {
   background-color:#BBDEFB;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#results_bleeding_well {
-  background-color:#c8e6c9;
   margin-left: auto;
   margin-right: auto;
 }
