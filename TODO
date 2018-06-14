@@ -17,8 +17,3 @@ TODO list, CARS:
 Decisions made
 - do not add CI or patient numbers - because this would not be useful in helping clinicians/patients make decisions
 - Christina send R code for forest plot of CHADVASC
-
-
-ASK THOMAS:
-why renal and liver combined in data, when it is seperate in HASBLED?
-To predict risk in treated, shouldn't I use af.all[treat == TRUE]? (not just af.all)
