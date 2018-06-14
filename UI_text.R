@@ -63,7 +63,7 @@ risk factors would experience a stroke within one year following diagnosis"
 
 results_bleeding_title <- "3. BLEEDING RISK"
 out_bleeding1 <-
-  "The risk of having a major bleeding event within one year
+  "The risk of having any bleeding event within one year
 following AF diagnosis is:"
 
 out_bleeding2 <- "This means that "

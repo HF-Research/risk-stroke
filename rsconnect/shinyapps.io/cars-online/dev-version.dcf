@@ -5,8 +5,8 @@ account: cars-online
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 360840
-bundleId: 1429155
+bundleId: 1429168
 url: https://cars-online.shinyapps.io/dev-version/
-when: 1528974303.93875
+when: 1528975157.60778
 asMultiple: FALSE
 asStatic: FALSE

@@ -178,15 +178,17 @@ ui <- fluidPage(
         )
       ),
 
-      fluidRow(wellPanel(
-        id = "results_bleeding_well",
-        div(class = "titles", results_bleeding_title),
-        div(class = "output_desc", textOutput("bleed_desc1")),
-        tags$h1(strong(textOutput("bleedRisk"))),
-        br(),
-        div(class = "output_desc", textOutput("bleed_desc2"))
+      fluidRow(
+        wellPanel(
+          id = "results_bleeding_well",
+          div(class = "titles", results_bleeding_title),
+          div(class = "output_desc", textOutput("bleed_desc1")),
+          tags$h1(strong(textOutput("bleedRisk"))),
+          br(),
+          div(class = "output_desc", textOutput("bleed_desc2"))
 
-      )),
+        )
+      ),
 
       div(class = "out_stroke_details", out_stroke_details),
       br(),
@@ -279,7 +281,8 @@ server <- function(input, output) {
     # browser()
     stroke_sub <- subsetStroke()
     if (is.valid.age(stroke_sub$age_as_number)) {
-      number_strokes <- round(stroke_sub$stroke_sub * 0.01 * 1000)
+      number_strokes <-
+        (round(stroke_sub$stroke_sub, digits = 1) * 0.01 * 1000)
       ifelse(
         number_strokes >= 1,
         paste0(out_stroke2, number_strokes, out_stroke3),
@@ -321,7 +324,8 @@ server <- function(input, output) {
     # browser()
     bleed_sub <- subsetBleed()
     if (is.valid.age(bleed_sub$age_as_number)) {
-      number_bleed <- round(bleed_sub$bleed_sub * 0.01 * 1000)
+      number_bleed <-
+        (round(bleed_sub$bleed_sub, digits = 1) * 0.01 * 1000)
       ifelse(
         number_bleed >= 1,
         paste0(out_bleeding2, number_bleed, out_bleeding3),
