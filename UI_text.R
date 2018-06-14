@@ -46,16 +46,20 @@ help_vasc <-
 
 results_stroke_title <- "2. STROKE RISK"
 out_stroke <-
+
   "The risk of having a stroke and thromboembolism within one year following
 atrial fibrillation (AF) diagnosis, for patients who do not receive
 anticoagulation treatment is:"
 
+
 out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
 factors would experience a stroke within the year following diagnisis"
+
 out_strokeLessOne <-
   "This means that <1 out of every 1000 patients with the same
 risk factors would experience a stroke within one year following diagnosis"
+
 
 
 
