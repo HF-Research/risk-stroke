@@ -5,6 +5,8 @@ account: cars-online
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 347094
-bundleId: 1427146
+bundleId: 1429056
 url: https://cars-online.shinyapps.io/riskvisrr/
-when: 1528886816.7153
+when: 1528969125.85541
+asMultiple: FALSE
+asStatic: FALSE

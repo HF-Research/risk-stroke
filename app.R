@@ -239,7 +239,7 @@ server <- function(input, output) {
                              hypertension %in% input$hyperT &
                              vascular %in% input$vasc,
                            stroke1y]
-      number_strokes <- round(dat.sub*0.01*1000)
+      number_strokes <- (round(dat.sub, digits = 1)*0.01*1000)
       ifelse(number_strokes >= 1,
              paste0(out_stroke2, number_strokes, out_stroke3),
              out_strokeLessOne
