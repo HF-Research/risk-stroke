@@ -52,7 +52,7 @@ anticoagulation treatment is:"
 
 out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
-factors would experience a stroke within the year following diagnisis"
+factors would experience a stroke within the year following diagnosis"
 out_strokeLessOne <-
   "This means that <1 out of every 1000 patients with the same
 risk factors would experience a stroke within one year following diagnosis"
@@ -68,7 +68,7 @@ following AF diagnosis is:"
 
 out_bleeding2 <- "This means that "
 out_bleeding3 <- " out of 1000 patients with the same risk
-factors would experience a major bleeding event within the year following diagnisis"
+factors would experience any bleeding event within the year following diagnosis"
 out_bleedingLessOne <-
   "This means that <1 out of every 1000 patients with the same risk factors
 would experience a major bleeding event within one year following diagnosis"
