@@ -218,3 +218,67 @@ label{
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+
+#board-inner {
+  padding: 0px;
+  display: block;
+  max-width: 240px;
+  margin-left:auto;
+  margin-right:auto;
+  background: #fff;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 0px solid #aaa;
+}
+@media only screen and (max-width: 460px) {
+  #board-inner {
+    padding: 1px;
+  }
+}
+.board-row {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+.board-cell {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+
+  border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+}
+
+
+
+
+
+
+.board-cell.off {
+  background: #009900;
+}
+.board-cell.on {
+  background: #CD0000;
+}
+.board-cell.off:hover {
+  background: #3AB903;
+}
+.board-cell.on:hover {
+  background: #CD0000;
+  background: -webkit-linear-gradient(rgb(66, 255, 66), #065006);
+  background: -moz-linear-gradient(rgb(66, 255, 66), #065006);
+  background: radial-gradient(rgb(66, 255, 66), #065006);
+}
+
+
+@media only screen and (max-width: 550px) {
+  #congrats {
+    font-size: 30px;
+  }
+}
