@@ -79,7 +79,7 @@ shinyServer(function(input, output) {
     if (!is.valid.age(txt2num())) {
       enter_age
     } else {
-      ifelse(subsetBleed() < 0.1,µ
+      ifelse(subsetBleed() < 0.1,
              paste0("<0.1%"),
              paste0(sprintf(
                "%.1f",
