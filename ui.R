@@ -28,7 +28,10 @@ shinyUI(fluidPage(
   ),
 
   fluidRow(
-    # Input column
+
+
+
+    # INPUT -------------------------------------------------------------------
     column(
       id = "input_col",
       6,
@@ -161,10 +164,14 @@ shinyUI(fluidPage(
       )
     ),
 
-    # Results column:
+
+    # OUTPUT ------------------------------------------------------------------
+
     column(
       id = "results",
       6,
+      tabsetPanel(type = "tabs",
+                  tabPanel("text",
       fluidRow(
         wellPanel(
           id = "results_stroke_well",
@@ -176,6 +183,7 @@ shinyUI(fluidPage(
         )
       ),
 
+
       fluidRow(
         wellPanel(
           id = "results_bleeding_well",
@@ -186,7 +194,14 @@ shinyUI(fluidPage(
           div(class = "output_desc", textOutput("bleed_desc2"))
 
         )
-      ),
+      )),
+tabPanel("plot",
+      fluidRow(
+        wellPanel(
+          id = "results_plot_stroke",
+          uiOutput("plot_stroke")
+        )
+      )),
 
       div(class = "out_stroke_details", out_stroke_details),
       br(),
@@ -206,6 +221,8 @@ shinyUI(fluidPage(
         tags$li(ref2),
         tags$li(ref3),
         tags$li(ref4)
+      )
+
       )
     )
   )
