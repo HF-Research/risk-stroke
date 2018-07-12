@@ -9,7 +9,7 @@ shinyServer(function(input, output) {
   })
 
   subsetStroke <- reactive({
-    # Reactive function will save it's output. It will only run again if input
+    # Reactive function will cache it's output. It will only run again if input
     # has changed, otherwise, repeated calls to it will only access the cached
     # values, not re-calculate.
     stroke.dt[age == txt2num() &
@@ -69,4 +69,54 @@ shinyServer(function(input, output) {
                   outLessOne = out_bleedingLessOne)
 
   })
+
+
+
+  # VISUALIZE NUMBER OF SICK - STROKE ---------------------------------------
+  output$plot_stroke <- renderUI({
+    # Get the values for the board:
+    # browser()
+    if(is.valid.age(txt2num())) {
+      n_sick_stroke <- round(subsetStroke(), digits = 0)
+      n_population <- 100
+      board_fill <- c(rep(0, n_population - n_sick_stroke),
+                      rep(1, n_sick_stroke))
+      n_rows <- 10
+      n_cols <- 10
+      board <- matrix(board_fill,
+                      nrow = n_rows,
+                      ncol = n_cols, byrow = TRUE)
+
+      # Assign appropriate div IDs to each cell in the board:
+      isolate({
+
+        div(
+          id = "board-inner",
+          lapply(seq(n_rows), function(row) {
+            tagList(
+              div(
+                class = "board-row",
+                lapply(seq(n_cols), function(col) {
+                  # browser()
+                  value <- board[row, col]
+                  # value <- board_entries(values$board)[row, col]
+                  visClass <- ifelse(value == 0, "off", "on")
+                  id <- sprintf("cell-%s-%s", row, col)
+                  div(
+                    id = id,
+                    class = paste("board-cell", visClass)
+                  )
+                })
+              ),
+              # This empty div seems to provide a way to "break" the rows. Without this
+              # div element, the rows all move to one long line
+              div()
+            )
+          })
+        )
+      })
+    }
+  })
+
+
 })
