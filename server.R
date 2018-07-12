@@ -3,15 +3,15 @@ library(shiny)
 shinyServer(function(input, output) {
 
 
-# REACTIVE FUNCTIONS ------------------------------------------------------
+  # REACTIVE FUNCTIONS ------------------------------------------------------
   txt2num <- reactive({
     as.numeric(input$user_age)
   })
 
   subsetStroke <- reactive({
     # Reactive function will save it's output. It will only run again if input
-    # has changed, otherwise, repeated calls to it will access the cached values
-    # only
+    # has changed, otherwise, repeated calls to it will only access the cached
+    # values, not re-calculate.
     stroke.dt[age == txt2num() &
                 female %in% input$sex &
                 stroke %in% input$stroke &
@@ -34,23 +34,9 @@ shinyServer(function(input, output) {
 
 
 
-# WRITE STROKE OUTPUT -----------------------------------------------------
+  # WRITE STROKE OUTPUT -----------------------------------------------------
   output$strokeRisk <- renderText({
-    # Order of subset arguments must be same order as new.col.order variable set in
-    # intro.
-
-    if (!is.valid.age(txt2num())) {
-      enter_age
-    } else {
-      ifelse(subsetStroke() < 0.1,
-             paste0("<0.1%"),
-             paste0(sprintf(
-               "%.1f",
-               round(subsetStroke(),
-                     digits = 1)
-             ),
-             "%"))
-    }
+    outputHelper1(subsetStroke(), txt2num(), enter_age)
   })
 
   output$stroke_desc1 <- renderText({
@@ -58,36 +44,17 @@ shinyServer(function(input, output) {
   })
 
   output$stroke_desc2 <- renderText({
-    # browser()
+    outputHelper2(data = subsetStroke(),
+                  age = txt2num(),
+                  out2 = out_stroke2,
+                  out3 = out_stroke3,
+                  outLessOne = out_strokeLessOne)
 
-    if (is.valid.age(txt2num())) {
-      number_strokes <-
-        (round(subsetStroke(), digits = 1) * 0.01 * 1000)
-      ifelse(
-        number_strokes >= 1,
-        paste0(out_stroke2, number_strokes, out_stroke3),
-        out_strokeLessOne
-      )
-    } else {
-      ""
-    }
   })
 
-# WRITE BLEEDING OUTPUT ---------------------------------------------------
+  # WRITE BLEEDING OUTPUT ---------------------------------------------------
   output$bleedRisk <- renderText({
-    # browser()
-    if (!is.valid.age(txt2num())) {
-      enter_age
-    } else {
-      ifelse(subsetBleed() < 0.1,
-             paste0("<0.1%"),
-             paste0(sprintf(
-               "%.1f",
-               round(subsetBleed(),
-                     digits = 1)
-             ),
-             "%"))
-    }
+    outputHelper1(subsetBleed(), txt2num(), enter_age)
   })
 
   output$bleed_desc1 <- renderText({
@@ -95,18 +62,11 @@ shinyServer(function(input, output) {
   })
 
   output$bleed_desc2 <- renderText({
-    if (is.valid.age(txt2num())) {
-      number_bleed <-
-        (round(subsetBleed(), digits = 1) * 0.01 * 1000)
-      ifelse(
-        number_bleed >= 1,
-        paste0(out_bleeding2, number_bleed, out_bleeding3),
-        out_bleedingLessOne
-      )
-    } else {
-      ""
-    }
+    outputHelper2(data = subsetBleed(),
+                  age = txt2num(),
+                  out2 = out_bleeding2,
+                  out3 = out_bleeding3,
+                  outLessOne = out_bleedingLessOne)
+
   })
-
-
 })
