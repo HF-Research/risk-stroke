@@ -1,18 +1,19 @@
 library(shiny)
 library(shinyWidgets)
 library(data.table)
+library(ggplot2)
 
 source("functions.R")
 source("UI_text.R")
 source("1-data-prep.R")
-
-input_id_vec <- c("user_age",
-                  "sex",
-                  "stroke",
-                  "hf",
-                  "diabetes",
-                  "hyperT",
-                  "vasc")
+#
+# input_id_vec <- c("user_age",
+#                   "sex",
+#                   "stroke",
+#                   "hf",
+#                   "diabetes",
+#                   "hyperT",
+#                   "vasc")
 button.width <- "260px"
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -28,9 +29,6 @@ shinyUI(fluidPage(
   ),
 
   fluidRow(
-
-
-
     # INPUT -------------------------------------------------------------------
     column(
       id = "input_col",
@@ -170,61 +168,66 @@ shinyUI(fluidPage(
     column(
       id = "results",
       6,
-      tabsetPanel(type = "tabs",
-                  tabPanel("text",
-      fluidRow(
-        wellPanel(
-          id = "results_stroke_well",
-          div(class = "titles", results_stroke_title),
-          div(class = "output_desc", textOutput("stroke_desc1")),
-          tags$h1(strong(textOutput("strokeRisk"))),
-          br(),
-          div(class = "output_desc", textOutput("stroke_desc2"))
+      tabsetPanel(
+        type = "tabs",
+        tabPanel("text",
+                 fluidRow(
+                   wellPanel(
+                     id = "results_stroke_well",
+                     div(class = "titles", results_stroke_title),
+                     div(class = "output_desc", textOutput("stroke_desc1")),
+                     tags$h1(strong(textOutput("strokeRisk"))),
+                     br(),
+                     div(class = "output_desc", textOutput("stroke_desc2"))
+                   )
+                 ),
+
+
+                 fluidRow(
+                   wellPanel(
+                     id = "results_bleeding_well",
+                     div(class = "titles", results_bleeding_title),
+                     div(class = "output_desc", textOutput("bleed_desc1")),
+                     tags$h1(strong(textOutput("bleedRisk"))),
+                     br(),
+                     div(class = "output_desc", textOutput("bleed_desc2"))
+
+                   )
+                 )),
+
+        tabPanel("plot",
+                 fluidRow(
+                   wellPanel(id = "results_plot_stroke",
+                             uiOutput("plot_stroke"))
+                 ),
+
+
+                 fluidRow(
+                   wellPanel(id = "results_plot_riskbar",
+                             plotOutput("plot_riskbar"))
+                 )),
+
+        div(class = "out_stroke_details", out_stroke_details),
+        br(),
+        div(class = "out_stroke_details", out_stroke_details2),
+        tags$ul(
+          class = "out_stroke_details",
+          tags$li(out_details_list1),
+          tags$li(out_details_list2)
+        ),
+        br(),
+        br(),
+        hr(),
+        div(class = "ref", references),
+        tags$ol(
+          class = "ref",
+          tags$li(ref1),
+          tags$li(ref2),
+          tags$li(ref3),
+          tags$li(ref4)
         )
-      ),
-
-
-      fluidRow(
-        wellPanel(
-          id = "results_bleeding_well",
-          div(class = "titles", results_bleeding_title),
-          div(class = "output_desc", textOutput("bleed_desc1")),
-          tags$h1(strong(textOutput("bleedRisk"))),
-          br(),
-          div(class = "output_desc", textOutput("bleed_desc2"))
-
-        )
-      )),
-tabPanel("plot",
-      fluidRow(
-        wellPanel(
-          id = "results_plot_stroke",
-          uiOutput("plot_stroke")
-        )
-      )),
-
-      div(class = "out_stroke_details", out_stroke_details),
-      br(),
-      div(class = "out_stroke_details", out_stroke_details2),
-      tags$ul(
-        class = "out_stroke_details",
-        tags$li(out_details_list1),
-        tags$li(out_details_list2)
-      ),
-      br(),
-      br(),
-      hr(),
-      div(class = "ref", references),
-      tags$ol(
-        class = "ref",
-        tags$li(ref1),
-        tags$li(ref2),
-        tags$li(ref3),
-        tags$li(ref4)
-      )
 
       )
     )
   )
-)
-)
+))
