@@ -6,14 +6,7 @@ library(ggplot2)
 source("functions.R")
 source("UI_text.R")
 source("1-data-prep.R")
-#
-# input_id_vec <- c("user_age",
-#                   "sex",
-#                   "stroke",
-#                   "hf",
-#                   "diabetes",
-#                   "hyperT",
-#                   "vasc")
+
 button.width <- "260px"
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(

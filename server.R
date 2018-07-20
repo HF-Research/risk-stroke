@@ -34,7 +34,7 @@ shinyServer(function(input, output) {
 
   dataPrep <- reactive({
     n <- 1000
-    x <- data.frame(matrix(seq(0.01, 25, length.out = n), nrow = n, ncol = 1))
+    x <- data.frame(matrix(seq(0.01, 24, length.out = n), nrow = n, ncol = 1))
     colnames(x) <- "v1"
     x
   })
@@ -44,6 +44,7 @@ shinyServer(function(input, output) {
     # this first color ramp. Then we make a second color ramp where we spline
     # through the green-ish color we just extract. This will have the effect of
     # pulling the green color up off the bottom after dong the log-transform.
+    n <-1000
     col_pal_1 <- colorRampPalette(colors = c("#2CDE0D", "red"))
     col_ramp_1 <- col_pal_1(n)
 
@@ -53,6 +54,7 @@ shinyServer(function(input, output) {
     col_pal(n)
 
   })
+
   plotRiskBar <- reactive({
     ggplot(dataPrep(), aes(x = 1, y = v1)) + geom_tile(aes(fill = v1)) +
       scale_fill_gradientn(colors = colorRamp(),
@@ -61,8 +63,8 @@ shinyServer(function(input, output) {
       theme(axis.text = element_blank(),
             axis.title = element_blank(),
             panel.grid = element_blank(),
-            legend.position = "nonoe") +
-      geom_hline(yintercept = 4)
+            legend.position = "nonoe")
+
   })
 
 
@@ -152,7 +154,10 @@ shinyServer(function(input, output) {
   })
 
   output$plot_riskbar <- renderPlot({
-    plotRiskBar()
+    if (is.valid.age(txt2num())) {
+      plotRiskBar() +
+      geom_hline(yintercept = subsetStroke(), size = 1)
+    }
   })
 
 
