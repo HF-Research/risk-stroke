@@ -17,6 +17,9 @@ var scaleR = d3.scaleLinear()
   .domain([0, d3.max(data, function(d){return d[1];})])
   .range([1, 10]);
 
+var axisX = d3.axisBottom(scaleX);
+
+
 svg.selectAll('circle')
   .data(data)
   .enter().append('circle')
@@ -31,3 +34,8 @@ svg.selectAll('circle')
       return scaleR(d[1]);
     })
     .style('fill', "steelblue");
+
+svg.append("g")
+  .call(axisX)
+  .attr("transform", "translate(0," + (height - pad) + ")");
+
