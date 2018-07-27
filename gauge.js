@@ -1,4 +1,4 @@
- // !preview r2d3 data=df, viewer = c("browser")
+ // !preview r2d3 data=3, viewer = c("browser")
 
 
 
@@ -9,13 +9,14 @@ svg.attr("width", dim).attr("height", dim);
 var radius = dim / 2;
 
 // GLOBAL
-var pie_data = [1];
+var pie_data = [1]; // Don't need real data, this just sets up
 var maxVal = 25;
 var angle = 0;
 var angleMin = -110;
 var angleMax = 110;
 var angleRange = angleMax - angleMin;
 innerRadius = ((radius - 10) / 5) * 3;
+
 // Helper functions
 function deg2rad(deg) {
   return  deg * Math.PI / 180;
@@ -152,9 +153,9 @@ wrap.append('g')
     .attr("fill", "#666");
 
 
-
-function update(newVal){
-  newVal = newVal
+// Rendering on data change
+r2d3.onRender(function(newVal, width, height){
+  newVal = newVal;
   svg.select(".needle").select("line")
     .transition()
     .duration(1000)
@@ -165,7 +166,8 @@ function update(newVal){
     text.datum(newVal).text(function(d) {
       return roundSpec(d, 1) + "%";
     });
-}
+
+});
 
 function tweenNeedle(data, max){
   var prevAngle = angle;
@@ -173,4 +175,5 @@ function tweenNeedle(data, max){
   return d3.interpolateString("rotate(" + prevAngle + ")", "rotate(" + (data / max * angleRange) + ")");
 }
 
-update(2);
+
+
