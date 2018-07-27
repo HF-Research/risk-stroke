@@ -1,4 +1,4 @@
- // !preview r2d3 data=3, viewer = c("browser")
+ // !preview r2d3 data=0.1, viewer = c("browser")
 
 
 
@@ -151,6 +151,11 @@ wrap.append('g')
     .attr("cy", 0)
     .attr("r", radius/10)
     .attr("fill", "#666");
+
+wrap.append("g")
+  .attr('class', 'labels')
+
+
 
 
 // Rendering on data change
