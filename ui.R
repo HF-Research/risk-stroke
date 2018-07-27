@@ -2,7 +2,7 @@ library(shiny)
 library(shinyWidgets)
 library(data.table)
 library(ggplot2)
-
+library(r2d3)
 source("functions.R")
 source("UI_text.R")
 source("1-data-prep.R")
@@ -197,7 +197,7 @@ shinyUI(fluidPage(
 
                  fluidRow(
                    wellPanel(id = "results_plot_riskbar",
-                             plotOutput("plot_riskbar"))
+                             d3Output("plot_riskbar"))
                  )),
 
         div(class = "out_stroke_details", out_stroke_details),

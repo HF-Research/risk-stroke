@@ -1,5 +1,5 @@
 library(shiny)
-
+library(r2d3)
 shinyServer(function(input, output) {
 
 
@@ -64,6 +64,11 @@ shinyServer(function(input, output) {
             axis.title = element_blank(),
             panel.grid = element_blank(),
             legend.position = "nonoe")
+
+  })
+
+  plotd3 <- reactive({
+   r2d3(subsetStroke(), script = "gauge.js")
 
   })
 
@@ -153,10 +158,12 @@ shinyServer(function(input, output) {
     }
   })
 
-  output$plot_riskbar <- renderPlot({
+  output$plot_riskbar <- renderD3({
     if (is.valid.age(txt2num())) {
-      plotRiskBar() +
-      geom_hline(yintercept = subsetStroke(), size = 1)
+      plotd3()
+
+      # plotRiskBar() +
+      # geom_hline(yintercept = subsetStroke(), size = 1)
     }
   })
 
