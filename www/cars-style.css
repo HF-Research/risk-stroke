@@ -201,7 +201,7 @@ label{
 }
 
 #results {
-  max-width:650px;
+  max-width:520px;
   margin-left: auto;
   margin-right: auto;
 
@@ -218,8 +218,6 @@ label{
   margin-left: auto;
   margin-right: auto;
 }
-
-
 
 
 #board-inner {
@@ -254,7 +252,6 @@ label{
   -moz-border-radius: 1rem;
   -webkit-border-radius: 1rem;
 }
-
 
 
 

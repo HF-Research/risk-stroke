@@ -196,7 +196,7 @@ shinyUI(fluidPage(
 
 
                  fluidRow(
-                   wellPanel(id = "results_plot_riskbar",
+                   wellPanel(id = "results_gauge",
                              d3Output("plot_riskbar"))
                  )),
 

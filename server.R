@@ -68,13 +68,13 @@ shinyServer(function(input, output) {
   })
 
   plotd3 <- reactive({
-   r2d3(subsetStroke(), script = "gauge.js")
+   r2d3(subsetStroke(), script = "gauge.js", css = "www/gauge.css")
 
   })
 
 
 
-  # WRITE STROKE OUTPUT -----------------------------------------------------
+ # WRITE STROKE OUTPUT -----------------------------------------------------
   output$strokeRisk <- renderText({
     outputHelper1(subsetStroke(), txt2num(), enter_age)
   })
