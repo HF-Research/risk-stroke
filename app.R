@@ -5,7 +5,7 @@ library(data.table)
 
 load("data/stroke1yr.rda")
 source("functions.R")
-source("UI_text.R")
+source("UI_text.R", encoding = "UTF-8")
 # browser()
 stroke.dt <- data.table::data.table(stroke1yr)
 

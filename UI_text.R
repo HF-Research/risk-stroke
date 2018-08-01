@@ -71,8 +71,9 @@ references <- "References:"
 references_size <- "12px"
 
 ref1 <-
-  "Lee J-Y.C, Ozenne B, Gislason G, Olesen JB, Torp-Pedersen C, Gerds TA.
-The individual risk of stroke in patients with atrial fibrillation by the CHADSVASC score."
+  "Lee J-Y.C, Ozenne B, Toft-Petersen AP, Phelps MD, Gislason G, Olesen JB,
+Torp-Pedersen C, Gerds TA. The individual risk of stroke in patients with atrial
+fibrillation by the CHADSVASC score."
 ref_size <- "12px"
 
 ref2 <-
@@ -86,7 +87,7 @@ ref3 <-
 2014 AHA/ACC/HRS Guideline for the Management of Patients With Atrial Fibrillation:
 Executive Summary: A Report of the American College of Cardiology/
 American Heart Association Task Force on Practice Guidelines and the Heart Rhythm Society.
-J Am Coll Cardiol. 2. December 2014;64(21):2246–80."
+J Am Coll Cardiol. 2. December 2014;64(21):2246-80."
 
 
 ref4 <- "Lip GYH, Nieuwlaat R, Pisters R, Lane DA, Crijns HJGM.
