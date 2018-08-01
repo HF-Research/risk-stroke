@@ -4,7 +4,7 @@ library(data.table)
 library(ggplot2)
 library(r2d3)
 source("functions.R")
-source("UI_text.R")
+source("UI-DK.R", encoding = "UTF-8")
 source("1-data-prep.R")
 
 button.width <- "260px"
