@@ -1,23 +1,27 @@
- // !preview r2d3 data=0.1, viewer = c("browser")
+ // !preview r2d3 data=2, viewer = c("browser")
 
 
 
 /* Make sure we have a square svg. Tis is important for making sure the color
 gradiant remains unaffected by window resizes */
 var dim = Math.min(width, height);
-svg.attr("width", dim).attr("height", dim);
-var radius = dim / 2;
+svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)))
+
 
 // GLOBAL
+padding = dim * 0.0625;
+var radius = dim / 2 - padding;
 var pie_data = [1]; // Don't need real data, this just sets up
-var maxVal = 25;
-var angle = 0;
+var maxVal = 0.27;
+var angle = 0; // Initialize angle var
 var angleMin = -110;
 var angleMax = 110;
 var angleRange = angleMax - angleMin;
 innerRadius = ((radius - 10) / 5) * 3;
+var numLabels = 6;
+var labelOffset = -2;
 
-// Helper functions
+// HELPER FUNCTIONS
 function deg2rad(deg) {
   return  deg * Math.PI / 180;
 }
@@ -40,6 +44,12 @@ needleStart = function(degrees, xy){
   }
 };
 
+// CONSTRUCTOR FUNCTIONS (I think)
+tickScale = d3.scaleLinear()
+  .domain([0, maxVal])
+  .range([0, 1]);
+
+tickActuals = tickScale.ticks(numLabels);
 
 var valueToDegrees = d3.scaleLinear() //scaleLinear in d3v4!
   .domain([0, maxVal])
@@ -58,18 +68,21 @@ var gauge = d3.pie()
 
 // Make arc generator function variable to call later
 var arc = d3.arc()
-  .outerRadius(radius - 10)
+  .outerRadius(radius)
   .innerRadius(innerRadius);
 
-// Create wrapper so that needle rotates around correct element. i.e. we will
-// later append the needle to the wrapper, so that they share the same
-// coordinate system
+
+// BUILDING CHART
+
+/*Create wrapper so that needle rotates around correct element. i.e. we will
+  later append the needle to the wrapper, so that they share the same
+  coordinate system */
 var wrap = svg.append("g")
     .attr("class", "wrap")
-    .attr("transform", "translate(" + radius + "," + radius + ")");
+    .attr("transform", "translate(" + (radius + padding/2) +"," + (radius + padding) + ")");
 
 
-// GRADIENT:
+// Gradient:
 // See: https://stackoverflow.com/questions/31912686/how-to-draw-gradient-arc-using-d3-js
 //Append a defs (for definition) element to your SVG
 var defs = svg.append("defs");
@@ -78,10 +91,10 @@ var radialGradient = defs.append("radialGradient")
   .attr("id", "radial-gradient")
   .attr("gradientUnits", "userSpaceOnUse")
   .attr("cx", "0%")
-  .attr("cy", "75%")
-  .attr("r", "150%")
+  .attr("cy", "400%")
+  .attr("r", "300%")
   .attr("fx", "15%")
-  .attr("fy", "82%")
+  .attr("fy", "85%")
   .attr("gradientTransform", "translate(-" + radius + ", -" + radius + ")");
 
 /* Set color for start (0%) and end (100%). Don't change these. To change the
@@ -90,13 +103,16 @@ radialGradient.append("stop")
   .attr("offset", "0%")
   .style("stop-color", "#10e209");
 radialGradient.append("stop")
-  .attr("offset", "10%")
+  .attr("offset", "5%")
   .style("stop-color", "#10e209");
 radialGradient.append("stop")
-  .attr("offset", "20%")
+  .attr("offset", "17%")
+  .style("stop-color", "#ffff00");
+  radialGradient.append("stop")
+  .attr("offset", "25%")
   .style("stop-color", "#ffff00");
 radialGradient.append("stop")
-  .attr("offset", "40%")
+  .attr("offset", "60%")
   .style("stop-color", "#8b0000");
 radialGradient.append("stop")
   .attr("offset", "100%")
@@ -140,7 +156,7 @@ var needle = wrap.append("g")
 var text = svg.append("g")
   .attr("class", "text")
   .append("text")
-    .attr("transform", "translate(" + dim/2.2 + "," + dim / 1.5 + ")")
+    .attr("transform", "translate(" + (dim/2.2 - padding) + "," + (dim / 1.5 - padding) + ")")
     .attr("font-size", "3em");
 
 // Hub
@@ -152,15 +168,30 @@ wrap.append('g')
     .attr("r", radius/10)
     .attr("fill", "#666");
 
+
+// Labels
 wrap.append("g")
-  .attr('class', 'labels');
+  .attr('class', 'labels')
+  .selectAll('text')
+  .data(tickActuals)
+  .enter().append('text')
+    .attr("transform", function(d) {
+      var ratio = tickScale(d);
+      var newAngle = angleMin + (ratio * angleRange);
+      return('rotate(' +newAngle + ') translate(0' + (labelOffset - radius) + ')');
+    })
+    .text(d3.format('.0%'))
+    .attr("font-size", "2em");
+
 
 
 
 
 // Rendering on data change
 r2d3.onRender(function(newVal, width, height){
-  newVal = newVal;
+  /* Shiny gives data in %, but need to convert back to integer
+  because d3.format will convert back to % in the Labels section... */
+  newVal = newVal/100;
   svg.select(".needle").select("line")
     .transition()
     .duration(1000)
@@ -169,10 +200,10 @@ r2d3.onRender(function(newVal, width, height){
     });
 
     text.datum(newVal).text(function(d) {
-      if (d < 0.1) {
+      if (d*100 < 0.1) {
         return "<0.1%";
       } else {
-      return roundSpec(d, 1) + "%";
+      return roundSpec(d*100, 1) + "%";
       }
     });
 
