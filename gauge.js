@@ -153,7 +153,7 @@ wrap.append('g')
     .attr("fill", "#666");
 
 wrap.append("g")
-  .attr('class', 'labels')
+  .attr('class', 'labels');
 
 
 
@@ -169,7 +169,11 @@ r2d3.onRender(function(newVal, width, height){
     });
 
     text.datum(newVal).text(function(d) {
+      if (d < 0.1) {
+        return "<0.1%";
+      } else {
       return roundSpec(d, 1) + "%";
+      }
     });
 
 });
