@@ -44,7 +44,7 @@ help_vasc <-
 # STROKE RESULTS ----------------------------------------------------------
 
 
-results_stroke_title <- "2. STROKE RISK"
+results_stroke_title <- "2. RESULTATER"
 out_stroke <-
   "Risikoen for at f\u00E5 apopleksi inden for et år efter diagnosen atrieflimren er:"
 
