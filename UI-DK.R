@@ -11,15 +11,18 @@ subtitle_txt <- "Calculator of Absolute Stroke Risk"
 # INPUT UI ------------------------------------------------------------------
 input_title <- "1. INPUT"
 in_age <- "Patientens alder (mellem 20 og 99):"
-in_sex <- "Patient's sex"
+in_sex <- "Køn"
 
-in_stroke <- "Previous stroke/TCI/thromboembolism"
-in_hf <- "Heart failure"
-in_hyperT <- "Hypertension"
-in_diab <- "Diabetes mellitus"
+
+in_prevDiag <- "Har du tidligere været diagnosticeret med følgende:"
+
+in_stroke <- "Apopleksi/ TCI / Perifer emboli?"
+in_hf <- "Hjertesvigt?"
+in_hyperT <- "Hypertension?"
+in_diab <- "Diabetes mellitus?"
 in_vasc <-
-  "Vascular disease (Prior myocardial infarction, peripheral artery disease)"
-
+  "Vaskulær sygdom? (tidligere myokardieinfarkt, perifer arteriel sygdom)"
+in_yesNo_choice <- c("Nej", "Ja")
 
 # Bleeding variables
 in_bleed <- "Previous major bleeding"

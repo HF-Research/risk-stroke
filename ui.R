@@ -1,5 +1,6 @@
 library(shiny)
 library(shinyWidgets)
+library(shinyjs)
 library(data.table)
 library(ggplot2)
 library(r2d3)
@@ -10,6 +11,7 @@ source("1-data-prep.R")
 button.width <- "260px"
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
+  useShinyjs(),
   # Application title
   h1(title_txt),
   h4(subtitle_txt),
@@ -41,18 +43,21 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "sex",
           label = in_sex,
-          choices = c("Male" = "no",
-                      "Female" = "yes"),
+          choices = c("Mand" = "no",
+                      "Kvinde" = "yes"),
           checkIcon = list(yes = icon("check")),
           selected =  "no",
           # width = button.width,
           justified = TRUE
         ),
 
+        br(),
+        div(id = "in_prevDiag", in_prevDiag),
+
         shinyWidgets::radioGroupButtons(
           inputId = "hf",
           label = in_hf,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -65,7 +70,7 @@ shinyUI(fluidPage(
           inputId = "diabetes",
           label = in_diab,
 
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -77,7 +82,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "vasc",
           label = in_vasc,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -92,7 +97,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "stroke",
           label = in_stroke,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  "no",
           choiceValues = c("no",
                            "yes"),
@@ -104,7 +109,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "hyperT",
           label = in_hyperT,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -120,7 +125,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "bleeding",
           label = in_bleed,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -132,7 +137,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "ckd",
           label = in_ckd,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -144,7 +149,7 @@ shinyUI(fluidPage(
         shinyWidgets::radioGroupButtons(
           inputId = "drugs",
           label = in_drug,
-          choiceNames = c("No", "Yes"),
+          choiceNames = in_yesNo_choice,
           selected =  ("no"),
           choiceValues = c("no",
                            "yes"),
@@ -190,15 +195,16 @@ shinyUI(fluidPage(
 
         tabPanel("plot",
                  fluidRow(
-                   wellPanel(id = "results_plot_stroke",
-                             uiOutput("plot_stroke"))
+                   wellPanel(id = "results_gauge",
+                             d3Output("plot_riskbar", height = "100%"))
                  ),
 
 
                  fluidRow(
-                   wellPanel(id = "results_gauge",
-                             d3Output("plot_riskbar"))
-                 )),
+                   wellPanel(id = "results_plot_stroke",
+                             uiOutput("plot_stroke"))
+                 )
+                 ),
 
         div(class = "out_stroke_details", out_stroke_details),
         br(),

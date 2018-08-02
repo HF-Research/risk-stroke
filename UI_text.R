@@ -13,13 +13,15 @@ input_title <- "1. INPUT"
 in_age <- "Patient's age (between 20-99 years)"
 in_sex <- "Patient's sex"
 
+in_prevDiag <- "Have you previously been diagnosed with the following:"
+
 in_stroke <- "Previous stroke/TCI/thromboembolism"
 in_hf <- "Heart failure"
 in_hyperT <- "Hypertension"
 in_diab <- "Diabetes mellitus"
 in_vasc <-
   "Vascular disease (Prior myocardial infarction, peripheral artery disease)"
-
+in_yesNo_choice <- c("No", "Yes")
 
 # Bleeding variables
 in_bleed <- "Previous major bleeding"
