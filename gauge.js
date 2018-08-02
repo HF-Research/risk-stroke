@@ -88,7 +88,7 @@ var arc = d3.arc()
   coordinate system */
 var wrap = svg.append("g")
     .attr("class", "wrap")
-    .attr("transform", "translate(" + (radius + padding/2) +"," + (radius + padding) + ")");
+    .attr("transform", "translate(" + (radius  + padding) +"," + (radius + padding) + ")");
 
 
 // Gradient:
