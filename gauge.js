@@ -25,8 +25,8 @@ var numLabels = 6;
 
 // FOMARRTING
 var labelOffset = -2;
-var textSize1 = "2.5em";
-var textSize2 = "2em";
+var textSize1 = "250%";
+var textSize2 = "200%";
 xOffset = -dim * 0.0;
 yOffset = dim * 1.5 * 0.089;
 

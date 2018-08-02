@@ -120,6 +120,7 @@ label{
   font-size: 1.5rem;
 }
 
+
 .btn.radiobtn.btn-default {
   background-color: #efefef;
   border-color: #efefef;
@@ -200,6 +201,12 @@ label{
   margin-right: auto;
 }
 
+#in_prevDiag {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
 #results {
   max-width:520px;
   margin-left: auto;
@@ -219,6 +226,9 @@ label{
   margin-right: auto;
 }
 
+#results_gauge {
+  min-height: 220px;
+}
 
 #board-inner {
   padding: 0px;
