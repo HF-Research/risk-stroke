@@ -4,8 +4,11 @@
 
 /* Make sure we have a square svg. Tis is important for making sure the color
 gradiant remains unaffected by window resizes */
-var dim = Math.min(width, height);
-svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)))
+var dim = Math.max(width, height);
+if (dim <220) {
+  var dim = 220;
+}
+svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)));
 
 
 // GLOBAL
@@ -19,7 +22,13 @@ var angleMax = 110;
 var angleRange = angleMax - angleMin;
 innerRadius = ((radius - 10) / 5) * 3;
 var numLabels = 6;
+
+// FOMARRTING
 var labelOffset = -2;
+var textSize1 = "2.5em";
+var textSize2 = "2em";
+xOffset = -dim * 0.0;
+yOffset = dim * 1.5 * 0.089;
 
 // HELPER FUNCTIONS
 function deg2rad(deg) {
@@ -156,8 +165,9 @@ var needle = wrap.append("g")
 var text = svg.append("g")
   .attr("class", "text")
   .append("text")
-    .attr("transform", "translate(" + (dim/2.2 - padding) + "," + (dim / 1.5 - padding) + ")")
-    .attr("font-size", "3em");
+    .attr("transform", "translate(" + (radius + padding + xOffset) + "," + (radius + padding + yOffset) + ")")
+    .attr("font-size", textSize1)
+    .attr("text-anchor", "middle");
 
 // Hub
 wrap.append('g')
@@ -171,17 +181,18 @@ wrap.append('g')
 
 // Labels
 wrap.append("g")
-  .attr('class', 'labels')
+  .attr('id', 'label')
   .selectAll('text')
-  .data(tickActuals)
-  .enter().append('text')
-    .attr("transform", function(d) {
-      var ratio = tickScale(d);
-      var newAngle = angleMin + (ratio * angleRange);
-      return('rotate(' +newAngle + ') translate(0' + (labelOffset - radius) + ')');
-    })
-    .text(d3.format('.0%'))
-    .attr("font-size", "2em");
+    .data(tickActuals)
+    .enter().append('text')
+      .attr("transform", function(d) {
+        var ratio = tickScale(d);
+        var newAngle = angleMin + (ratio * angleRange);
+        return('rotate(' +newAngle + ') translate(0' + (labelOffset - radius) + ')');
+      })
+      .text(d3.format('.0%'))
+      .attr("font-size", textSize2);
+
 
 
 
