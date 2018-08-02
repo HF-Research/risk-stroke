@@ -3,6 +3,11 @@ library(r2d3)
 shinyServer(function(input, output) {
 
 
+  # INVOKE SHINY JS ---------------------------------------------------------
+
+  onclick("hf", jsButtonColor("hf", "#AF060F", value = "yes"))
+
+
   # REACTIVE FUNCTIONS ------------------------------------------------------
   txt2num <- reactive({
     as.numeric(input$user_age)
@@ -68,13 +73,13 @@ shinyServer(function(input, output) {
   })
 
   plotd3 <- reactive({
-   r2d3(subsetStroke(), script = "gauge.js")
+    r2d3(subsetStroke(), script = "gauge.js")
 
   })
 
 
 
- # WRITE STROKE OUTPUT -----------------------------------------------------
+  # WRITE STROKE OUTPUT -----------------------------------------------------
   output$strokeRisk <- renderText({
     outputHelper1(subsetStroke(), txt2num(), enter_age)
   })
