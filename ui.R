@@ -204,7 +204,7 @@ shinyUI(fluidPage(
                    wellPanel(id = "results_plot_stroke",
                              uiOutput("plot_stroke"))
                  )
-                 ),
+                 )),
 
         div(class = "out_stroke_details", out_stroke_details),
         br(),
@@ -226,7 +226,7 @@ shinyUI(fluidPage(
           tags$li(ref4)
         )
 
-      )
+
     )
   )
 ))
