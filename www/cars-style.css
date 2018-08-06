@@ -178,10 +178,14 @@ label{
 
 /* TABS */
  .tabbable > .nav > li[class=active] >a {
-   background-color: aqua;  color:black
+   color:black;
+   font-size: 1.3rem;
 
  }
-.tabbable > .nav > li >a {background-color: red;}
+.tabbable > .nav > li >a {
+  background-color: white;
+  font-size: 1.2rem;
+}
 
 #user_age {
   font-size:3.5rem;
