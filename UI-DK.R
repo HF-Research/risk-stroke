@@ -44,18 +44,25 @@ help_vasc <-
 # Must be in quotedt pixels (px), e.g.: "100px"
 
 
+
+# TAB NAMES ---------------------------------------------------------------
+
+results_1 <- "Quick results"
+results_2 <- "Expanded results"
+
 # STROKE RESULTS ----------------------------------------------------------
 
 
 results_stroke_title <- "2. RESULTATER"
-out_stroke <-
-  "Risikoen for at f\u00E5 apopleksi inden for et år efter diagnosen atrieflimren er:"
+results_stroke_header <-
+  "Risikoen for at få apopleksi inden for et år efter diagnosen atrieflimren er:"
+
 
 out_stroke2 <- "Det betyder at  "
-out_stroke3 <- " ud af 1000 patienter med de samme risikofaktorer vil få
+out_stroke3 <- " ud af 100 patienter med de samme risikofaktorer vil få
 apopleksi inden for året efter diagnosen"
 out_strokeLessOne <-
-  "Det betyder at <1 ud af 1000 patienter med de samme risikofaktorer vil få
+  "Det betyder at <1 ud af 100 patienter med de samme risikofaktorer vil få
 apopleksi inden for året efter diagnosen."
 
 

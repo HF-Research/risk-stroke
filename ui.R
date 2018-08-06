@@ -4,6 +4,7 @@ library(shinyjs)
 library(data.table)
 library(ggplot2)
 library(r2d3)
+library(shinyBS)
 source("functions.R")
 source("UI-DK.R", encoding = "UTF-8")
 source("1-data-prep.R")
@@ -163,41 +164,41 @@ navbarPage(
                6,
                tabsetPanel(
                  type = "tabs",
-                 tabPanel("text",
+                 tabPanel(results_1,
                           fluidRow(
                             wellPanel(
-                              id = "results_stroke_well",
-                              div(class = "titles", results_stroke_title),
-                              div(class = "output_desc", textOutput("stroke_desc1")),
-                              tags$h1(strong(textOutput("strokeRisk"))),
-                              br(),
-                              div(class = "output_desc", textOutput("stroke_desc2"))
+                              class = "results_stroke_well",
+                              # div(class = "results_header", results_stroke_header),
+                              div(class = "results_header", textOutput("stroke_desc1")),
+                              tags$h1(strong(textOutput("enter_age"))),
+                              d3Output("plot_riskbar", height = "100%"),
+
+                              br()
+
                             )
                           ),
 
 
                           fluidRow(
                             wellPanel(
-                              id = "results_bleeding_well",
-                              div(class = "titles", results_bleeding_title),
-                              div(class = "output_desc", textOutput("bleed_desc1")),
-                              tags$h1(strong(textOutput("bleedRisk"))),
+                              class = "results_stroke_well",
+                              div(class = "output_desc", textOutput("stroke_desc2")),
                               br(),
-                              div(class = "output_desc", textOutput("bleed_desc2"))
+                              uiOutput("plot_stroke")
 
                             )
                           )),
 
-                 tabPanel("plot",
+                 tabPanel(results_2,
                           fluidRow(
-                            wellPanel(id = "results_gauge",
-                                      d3Output("plot_riskbar", height = "100%"))
+                            wellPanel(id = "results_gauge"
+
+                                      )
                           ),
 
 
                           fluidRow(
-                            wellPanel(id = "results_plot_stroke",
-                                      uiOutput("plot_stroke"))
+                            wellPanel(id = "results_plot_stroke")
                           ))
                ),
 

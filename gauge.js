@@ -14,7 +14,7 @@ svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)));
 // GLOBAL
 padding = dim * 0.0625;
 var radius = dim / 2 - padding;
-var pie_data = [1]; // Don't need real data, this just sets up
+var pie_data = [1]; // Don't need real data, this just gives skeleton for element
 var maxVal = 0.27;
 var angle = 0; // Initialize angle var
 var angleMin = -110;
@@ -24,11 +24,11 @@ innerRadius = ((radius - 10) / 5) * 3;
 var numLabels = 6;
 
 // FOMARRTING
-var labelOffset = -2;
-var textSize1 = "250%";
+var labelOffset = -5; // Lower number moves away from graph
+var textSize1 = "400%";
 var textSize2 = "200%";
 xOffset = -dim * 0.0;
-yOffset = dim * 1.5 * 0.089;
+yOffset = dim * 1.5 * 0.1; // Higher number moves it downwards
 
 // HELPER FUNCTIONS
 function deg2rad(deg) {
@@ -167,6 +167,7 @@ var text = svg.append("g")
   .append("text")
     .attr("transform", "translate(" + (radius + padding + xOffset) + "," + (radius + padding + yOffset) + ")")
     .attr("font-size", textSize1)
+    .attr("font-weight", "bold")
     .attr("text-anchor", "middle");
 
 // Hub

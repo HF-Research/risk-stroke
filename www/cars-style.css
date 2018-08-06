@@ -159,9 +159,16 @@ label{
   margin-right:-5px;
 }
 
-.titles {
- font-size: 3.4rem;
+.results_stroke_well {
+  background-color:white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results_header {
+ font-size: 2.5rem;
  font-weight: bold;
+ line-height: 1.2;
 }
 
 .output_desc {
@@ -224,11 +231,6 @@ label{
 
 }
 
-#results_stroke_well {
-  background-color:#BBDEFB;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 #results_bleeding_well {
   background-color:#c8e6c9;

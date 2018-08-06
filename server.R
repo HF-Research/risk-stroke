@@ -77,7 +77,14 @@ shinyServer(function(input, output) {
 
   })
 
+  enterAge <- reactive({if (!is.valid.age(txt2num())) enter_age })
 
+
+
+
+  # VALID AGE OUTPUT --------------------------------------------------------
+
+  output$enter_age <- renderText(enterAge())
 
   # WRITE STROKE OUTPUT -----------------------------------------------------
   output$strokeRisk <- renderText({
@@ -85,7 +92,8 @@ shinyServer(function(input, output) {
   })
 
   output$stroke_desc1 <- renderText({
-    ifelse(is.valid.age(txt2num()), out_stroke, "")
+
+    ifelse(is.valid.age(txt2num()), results_stroke_header, "")
   })
 
   output$stroke_desc2 <- renderText({
