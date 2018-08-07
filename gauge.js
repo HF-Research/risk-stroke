@@ -8,7 +8,7 @@ var dim = Math.max(width, height);
 if (dim <220) {
   var dim = 220;
 }
-svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)));
+svg.attr("width", (dim)).attr("height", (dim-(1/3.2*dim)));
 
 
 // GLOBAL
@@ -26,10 +26,10 @@ transitionMs = 1000;
 
 // FOMARRTING
 var labelOffset = -5; // Lower number moves away from graph
-var textSize1 = "400%";
+var textSize1 = "500%";
 var textSize2 = "200%";
 xOffset = -dim * 0.0;
-yOffset = dim * 1.5 * 0.1; // Higher number moves it downwards
+yOffset = dim * 1.5 * 0.12; // Higher number moves it downwards
 hubColor = "black";
 pointerColor = "black";
 
