@@ -86,6 +86,19 @@ shinyServer(function(input, output) {
 
   output$enter_age <- renderText(enterAge())
 
+
+
+
+# SHOW/HIDE LOGIC ---------------------------------------------------------
+
+observe({
+  shinyjs::toggle(id = "plot_matrix",
+                  condition = is.valid.age(txt2num()),
+                  anim = TRUE,
+                  time = 0.2)
+})
+
+
   # WRITE STROKE OUTPUT -----------------------------------------------------
   output$strokeRisk <- renderText({
     outputHelper1(subsetStroke(), txt2num(), enter_age)
