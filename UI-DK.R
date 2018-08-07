@@ -82,22 +82,24 @@ out_bleedingLessOne <-
 would experience a major bleeding event within one year following diagnosis"
 
 
-# DESCRIPTIONS ------------------------------------------------------------
+# EXPLANITORY TEXT --------------------------------------------------------
 
-out_stroke_details <- "
+explanitory_header <- "Om CARS lommeregneren"
+
+explanitory_text_1 <- "
 CARS beregner den absolutte 1-årige risiko for apopleksi for patienter med
 atrieflimren som ikke er i antikoagulationsbehandling. Lommeregneren er baseret
 på en stor kohorte af danske patienter indlagt med atrieflimren for første gang
 på hospitalet [1]."
 
-out_stroke_details2 <- "
+explanitory_text_2 <- "
 Lommeregneren anvender de samme risikofaktorer som CHA2DS2-VASc-scoren [2]
 som er anbefalet i de seneste europæiske / amerikanske retningslinjer til at
 vurdere indikationen for antikoagulatonsbehandling til patienter med
 atrieflimren [3-4]. De vigtigste forskelle er følgende:"
-out_details_list1 <-
+explanitory_text_3 <-
   "Alder er inkluderet som en kontinuerlig variabel"
-out_details_list2 <-
+explanitory_text_4 <-
   "Den samlede risikoberegning tager højde for ikke en sum af risikofaktorer,
 men deres individuelle bidrag."
 
