@@ -168,7 +168,7 @@ label{
   margin-right:-10px;
 }
 
-.results_stroke_well {
+.results_well {
   background-color:white;
   margin-left: auto;
   margin-right: auto;
@@ -192,13 +192,47 @@ label{
 .ref{
   font-size: 1.2rem;}
 
-/* TABS */
+/* TABS & NAPAGEs */
+
+.nav.navbar-nav > li > a[data-value=Apopleski]{
+  font-size: 1.4rem;
+  color: white;
+  background-color: #1976D2;
+
+}
+
+.nav.navbar-nav > li[class=active] > a[data-value=Apopleski]{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  background-color: #1976D2;
+  -moz-box-shadow: inset -5px 5px 11px -6px #000000;
+  -webkit-box-shadow: inset -5px 5px 11px -6px #000000;
+  -box-shadow:inset -5px 5px 11px -6px #000000;
+}
+
+.nav.navbar-nav > li > a[data-value=Blødning]{
+  font-size: 1.4rem;
+  color: white;
+  background-color: #B73338;
+}
+
+.nav.navbar-nav > li[class=active] > a[data-value=Blødning]{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  background-color: #B73338;
+  -moz-box-shadow: inset -5px 5px 11px -6px #000000;
+  -webkit-box-shadow: inset -5px 5px 11px -6px #000000;
+  -box-shadow:inset -5px 5px 11px -6px #000000;
+}
+
  .tabbable > .nav > li[class=active] >a {
    color:black;
    font-size: 1.3rem;
 
  }
-.tabbable > .nav > li >a {
+.tabbable > .nav > li > a {
   background-color: white;
   font-size: 1.2rem;
 }
