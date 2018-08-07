@@ -14,7 +14,7 @@ in_age <- "Patientens alder (mellem 20 og 99):"
 in_sex <- "Køn"
 
 
-in_prevDiag <- "Har du tidligere været diagnosticeret med følgende:"
+in_prevDiag <- "Har patienten tidligere været diagnosticeret med følgende:"
 
 in_stroke <- "Apopleksi/ TCI / Perifer emboli?"
 in_hf <- "Hjertesvigt?"
@@ -64,6 +64,11 @@ apopleksi inden for året efter diagnosen"
 out_strokeLessOne <-
   "Det betyder at <1 ud af 100 patienter med de samme risikofaktorer vil få
 apopleksi inden for året efter diagnosen."
+
+out_stroke4 <- "Dette er repræsenteret i nedenstående figur. Der er i alt 100
+cirkler, der repræsenterer 100 patienter med de samme risikofaktorer. Hver rød
+cirkel repræsenterer en patient, der oplevede et apopleksi, mens hver grønne
+cirkel repræsenterer en patient, der ikke oplevede det. "
 
 
 
