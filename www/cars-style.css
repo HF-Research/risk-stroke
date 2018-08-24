@@ -23,6 +23,8 @@
   --danger: #F04124;
   --light: #eee;
   --dark: #222;
+  --bleeding: #B73338;
+  --stroke: #1976D2;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -113,7 +115,7 @@ label{
 }
 
 .btn.radiobtn.btn-default.active {
-  background-color:#1976D2 ;
+  background-color:var(--stroke) ;
   border-color:#337ab7;
   font-weight:bold;
   color:white;
@@ -122,7 +124,7 @@ label{
 
 /* space between selectors means descendent selector*/
 .tab-pane[data-value=Blødning] .btn.radiobtn.btn-default.active {
-  background-color:#B73338 ;
+  background-color: var(--bleeding);
   border-color:#92292D;
   font-weight:bold;
   color:white;
@@ -221,7 +223,7 @@ label{
   font-size: 1.5rem;
   font-weight: 600;
   color: white;
-  background-color: #B73338;
+  background-color: var(--bleeding);
   -moz-box-shadow: inset -5px 5px 11px -6px #000000;
   -webkit-box-shadow: inset -5px 5px 11px -6px #000000;
   -box-shadow:inset -5px 5px 11px -6px #000000;
