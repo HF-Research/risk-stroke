@@ -48,7 +48,7 @@ out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
 factors would experience a stroke within the year following diagnosis"
 out_strokeLessOne <- "This means that <1 out of 1000 patients with the same
-risk factors would experience a stroke within one year following diagnosis"
+risk factors would experience a stroke within the year following diagnosis"
 
 out_stroke_details <- "
 CARS calculates the absolute 1-year risk of stroke and thromboembolism for
