@@ -46,24 +46,26 @@ atrial fibrillation diagnosis is:"
 
 out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
-factors would experience a stroke within the year following diagnisis"
-out_strokeLessOne <- "This means that <1 out of every 1000 patients with the same
+factors would experience a stroke within the year following diagnosis"
+out_strokeLessOne <- "This means that <1 out of 1000 patients with the same
 risk factors would experience a stroke within one year following diagnosis"
 
 out_stroke_details <- "
-CARS calculates the absolute 1-year risk of stroke and thromboembolism for patients
-with atrial fibrillation and not receiving anticoagulation.
-The calculator is based on a large cohort of Danish patients admitted first time to the hospital
-for their atrial fibrillation [1]."
+CARS calculates the absolute 1-year risk of stroke and thromboembolism for
+patients with atrial fibrillation who did not receive anticoagulants. The
+calculator is based on a large cohort of Danish patients who were diagnosed for
+the first time, in a hospital, with atrial fibrillation [1]."
 
 
 out_stroke_details2 <- "
-The calculator uses the same risk factors as the CHA2DS2-VASc score [2] recommended in the latest European/American guidelines
-to guide the need for anticoagulation for patients with atrial fibrillation [3-4].
-The main differences are the following:"
+The calculator uses the same risk factors as the CHA2DS2-VASc score [2]
+recommended in the latest European/American guidelines to guide the need for
+anticoagulation for patients with atrial fibrillation [3-4]. The main
+differences are the following:"
 out_details_list1 <- "Age is included as a continuous variable"
 out_details_list2 <-
   "The overall risk calculation takes into account not a sum of risk factors, but their individual contribution."
+
 #This estimate is based on X number of patients who had similar covariates
 out_stroke_details2_size <- "14px"
 
@@ -71,9 +73,9 @@ references <- "References:"
 references_size <- "12px"
 
 ref1 <-
-  "Lee J-Y.C, Ozenne B, Toft-Petersen AP, Phelps MD, Gislason G, Olesen JB,
-Torp-Pedersen C, Gerds TA. The individual risk of stroke in patients with atrial
-fibrillation by the CHADSVASC score."
+  "1.	Lee J-Y.C, Toft-Petersen AP, Ozenne B, Phelps MD, Olesen JB, Ellinor P,
+Gislason G, Lip GYH, Torp-Pedersen C, Gerds TA. Assessing absolute stroke risk
+in patients with atrial fibrillation using a risk factor based approach."
 ref_size <- "12px"
 
 ref2 <-
