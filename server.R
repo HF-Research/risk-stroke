@@ -73,6 +73,7 @@ shinyServer(function(input, output) {
   })
 
   plotd3 <- reactive({
+
     r2d3(subsetStroke(), script = "gauge.js")
 
   })

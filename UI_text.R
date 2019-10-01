@@ -13,7 +13,8 @@ input_title <- "1. INPUT"
 in_age <- "Patient's age (between 20-99 years)"
 in_sex <- "Patient's sex"
 
-in_prevDiag <- "Have you previously been diagnosed with the following:"
+in_prevDiag <-
+  "Have you previously been diagnosed with the following:"
 
 in_stroke <- "Previous stroke/TCI/thromboembolism"
 in_hf <- "Heart failure"
@@ -56,8 +57,8 @@ out_stroke2 <- "This means that "
 out_stroke3 <- " out of 1000 patients with the same risk
 factors would experience a stroke within the year following diagnosis"
 out_strokeLessOne <-
-  "This means that <1 out of every 1000 patients with the same
-risk factors would experience a stroke within one year following diagnosis"
+  "This means that <1 out of  1000 patients with the same
+risk factors would experience a stroke within the year following diagnosis"
 
 
 
@@ -79,10 +80,10 @@ would experience a major bleeding event within one year following diagnosis"
 # DESCRIPTIONS ------------------------------------------------------------
 
 out_stroke_details <- "
-CARS calculates the absolute risk of stroke and thromboembolism in the first year following
-for patients diagnosis with atrial fibrillation and not receiving anticoagulation.
-The calculator is based on a large cohort of Danish patients admitted first time to the hospital
-for their atrial fibrillation [1]."
+CARS calculates the absolute 1-year risk of stroke and thromboembolism for patients
+with atrial fibrillation who did not receive anticoagulants. The calculator is
+based on a large cohort of Danish patients who were diagnosed for the first
+time, in a hospital, with atrial fibrillation [1]."
 
 
 out_stroke_details2 <- "
@@ -99,8 +100,9 @@ references <- "References:"
 references_size <- "12px"
 
 ref1 <-
-  "Lee J-Y.C, Ozenne B, Gislason G, Olesen JB, Torp-Pedersen C, Gerds TA.
-The individual risk of stroke in patients with atrial fibrillation by the CHADSVASC score."
+  "1.	Lee J-Y.C, Toft-Petersen AP, Ozenne B, Phelps MD, Olesen JB, Ellinor P,
+Gislason G, Lip GYH, Torp-Pedersen C, Gerds TA. Assessing absolute stroke risk
+in patients with atrial fibrillation using a risk factor based approach."
 ref_size <- "12px"
 
 ref2 <-
