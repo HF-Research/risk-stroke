@@ -3,11 +3,11 @@ library(shiny)
 library(shinyWidgets)
 library(data.table)
 
-load("data/stroke1yr.rda")
+stroke.dt <- fread(file = "data/stroke-1year-risk-predictions.txt")
 source("functions.R")
 source("UI_text.R", encoding = "UTF-8")
 # browser()
-stroke.dt <- data.table::data.table(stroke1yr)
+# stroke.dt <- data.table::data.table(stroke1yr)
 
 # Re-order columns to the order patients will enter their variables information
 # into the shiny app
