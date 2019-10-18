@@ -25,6 +25,15 @@
   --dark: #222;
   --bleeding: #B73338;
   --stroke: #1976D2;
+  --hfRed: #c8102E;
+  --hfRedBright: #dc1232;
+  --hfText: #454747;
+  --hfVeryLight: #f4f5f7;
+
+  --hfBlue: #325461;
+  --hfBlueLight: #e5e9eb;
+  --hfBlueMedium: #b2bfc3;
+
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -38,7 +47,7 @@
 body {
   margin: 0;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.9375rem;
+  font-size: 1.5375rem;
   font-weight: 400;
   line-height: 1.5;
   color: #222;
@@ -107,6 +116,64 @@ input[type="month"] {
 
 /*END COPY FROM BOOTSTRAP */
 
+
+/*NABAR STYLING*/
+
+
+.navbar{
+  margin-bottom: 30px;
+}
+.navbar-default{
+  background-color: var(--hfRed);
+}
+
+
+
+.navbar-default .navbar-nav>li>a:hover{
+  background-color: var(--hfRedBright);
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a{
+  font-weight: 600;
+  color: white;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover{
+  font-weight: 600;
+  font-size: 1.5em;
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a{
+  border-right: 1px solid #d6453d;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+  font-weight: 600;
+  color: var(--hfRed);
+  background-color: white;
+}
+
+
+/* TABSET STYLING*/
+.tabbable > .nav > li[class=active] >a{
+  background-color: var(--hfBlue);
+  color: white;
+  font-weight: 600;
+}
+
+.tabbable > .nav > li > a{
+  background-color: var(--white);
+  border-color: var(--hfBlueLight);
+  color: var(--hfBlue);
+  font-weight:600;
+}
+
+.nav-pills{
+  margin-bottom: 10px;}
+
+
 label{
   font-size:1.5rem;
   font-weight: 600;
@@ -114,45 +181,50 @@ label{
   margin-top:5px;
 }
 
+/**** BUTTON STYLES *****/
+
 .btn.radiobtn.btn-default.active {
-  background-color:var(--stroke) ;
-  border-color:#337ab7;
+  background-color:var(--hfBlue);
+  border-color:var(--hfBlue);
   font-weight:bold;
   color:white;
   font-size: 1.5rem;
+  padding-right:5px;
+  padding-left:5px;
 }
 
-/* space between selectors means descendent selector*/
-.tab-pane[data-value=Blødning] .btn.radiobtn.btn-default.active {
-  background-color: var(--bleeding);
-  border-color:#92292D;
-  font-weight:bold;
-  color:white;
-  font-size: 1.5rem;
+.btn.radiobtn.btn{
+  height: 35px;
 }
-
 
 .btn.radiobtn.btn-default {
-  background-color: #efefef;
-  border-color: #efefef;
-  color:black;
+  background-color: var(--white);
+  border-color: var(--hfBlueLight);
+  color:var(--hfBlue);
+  font-size:1.5rem;
+  font-weight:600;
+  ;
 }
 
 .btn.radiobtn.btn-default:hover {
-  background-color: #e8e3e3;
-  border-color: #bcbaba;
-  color:black;
+  background-color: var(--hfBlueMedium);
+  border-color: var(--hfBlueMedium);
+  color:white;
   font-size: 1.5rem;
   font-weight: 600;
+  padding-right:5px;
+  padding-left:5px;
 }
 
 .btn.radiobtn.btn-default.active:hover {
-  background-color:#337ab7;
-  border-color:#337ab7;
+  background-color:var(--hfBlue);
+  border-color:var(--hfBlue);
   font-weight:bold;
   color:white;
   font-size: 1.5rem;
+
 }
+
 
 .container-fluid {
   margin:auto;
@@ -193,51 +265,6 @@ label{
 }
 .ref{
   font-size: 1.2rem;}
-
-/* TABS & NAPAGEs */
-
-.nav.navbar-nav > li > a[data-value=Apopleski]{
-  font-size: 1.4rem;
-  color: white;
-  background-color: #1976D2;
-
-}
-
-.nav.navbar-nav > li[class=active] > a[data-value=Apopleski]{
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  background-color: #1976D2;
-  -moz-box-shadow: inset -5px 5px 11px -6px #000000;
-  -webkit-box-shadow: inset -5px 5px 11px -6px #000000;
-  -box-shadow:inset -5px 5px 11px -6px #000000;
-}
-
-.nav.navbar-nav > li > a[data-value=Blødning]{
-  font-size: 1.4rem;
-  color: white;
-  background-color: #B73338;
-}
-
-.nav.navbar-nav > li[class=active] > a[data-value=Blødning]{
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  background-color: var(--bleeding);
-  -moz-box-shadow: inset -5px 5px 11px -6px #000000;
-  -webkit-box-shadow: inset -5px 5px 11px -6px #000000;
-  -box-shadow:inset -5px 5px 11px -6px #000000;
-}
-
- .tabbable > .nav > li[class=active] >a {
-   color:black;
-   font-size: 1.3rem;
-
- }
-.tabbable > .nav > li > a {
-  background-color: white;
-  font-size: 1.2rem;
-}
 
 
 #user_age {

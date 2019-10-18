@@ -6,7 +6,9 @@
 # TITLE -------------------------------------------------------------------
 title_txt <- "CARS"
 subtitle_txt <- "Calculator of Absolute Stroke Risk"
-
+ui_stroke_title <- enc2utf8("Apopleski")
+ui_bleeding_title <- enc2utf8("Blødning")
+ui_about_title <- enc2utf8("Om CARS")
 
 # INPUT UI ------------------------------------------------------------------
 input_title <- "1. INPUT"
