@@ -26,8 +26,8 @@ transitionMs = 1000;
 
 // FOMARRTING
 var labelOffset = -5; // Lower number moves away from graph
-var textSize1 = "500%";
-var textSize2 = "200%";
+var textSize1 = "300%";
+var textSize2 = "140%";
 xOffset = -dim * 0.0;
 yOffset = dim * 1.5 * 0.12; // Higher number moves it downwards
 hubColor = "black";
