@@ -54,17 +54,6 @@ subsetBleed <- reactive({
            bleeding1y]
 })
 
-dataPrep <- reactive({
-  n <- 1000
-  x <-
-    data.frame(matrix(
-      seq(0.01, 24, length.out = n),
-      nrow = n,
-      ncol = 1
-    ))
-  colnames(x) <- "v1"
-  x
-})
 
 colorRamp <- reactive({
   # Create first color ramp. We will extract a color from near the green side of
@@ -80,20 +69,6 @@ colorRamp <- reactive({
   col_pal <-
     colorRampPalette(colors = c("#2CDE0D", col_ramp_1[65], "red"))
   col_pal(n)
-
-})
-
-plotRiskBar <- reactive({
-  ggplot(dataPrep(), aes(x = 1, y = v1)) + geom_tile(aes(fill = v1)) +
-    scale_fill_gradientn(colors = colorRamp(),
-                         trans = 'log') +
-    theme_minimal() +
-    theme(
-      axis.text = element_blank(),
-      axis.title = element_blank(),
-      panel.grid = element_blank(),
-      legend.position = "nonoe"
-    )
 
 })
 
@@ -149,26 +124,6 @@ output$stroke_desc2 <- renderText({
 
 })
 
-# WRITE BLEEDING OUTPUT ---------------------------------------------------
-output$bleedRisk <- renderText({
-  outputHelper1(subsetBleed(), txt2num(), enter_age)
-})
-
-output$bleed_desc1 <- renderText({
-  ifelse(is.valid.age(txt2num()), out_bleeding1, "")
-})
-
-output$bleed_desc2 <- renderText({
-  outputHelper2(
-    data = subsetBleed(),
-    age = txt2num(),
-    out2 = out_bleeding2,
-    out3 = out_bleeding3,
-    outLessOne = out_bleedingLessOne
-  )
-
-})
-
 
 
 # VISUALIZE NUMBER OF SICK - STROKE ---------------------------------------
@@ -209,11 +164,3 @@ output$plot_stroke <- renderUI({
   }
 })
 
-output$plot_riskbar <- renderD3({
-  if (is.valid.age(txt2num())) {
-    plotd3()
-
-    # plotRiskBar() +
-    # geom_hline(yintercept = subsetStroke(), size = 1)
-  }
-})
