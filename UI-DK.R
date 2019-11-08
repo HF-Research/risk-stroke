@@ -6,7 +6,9 @@
 # TITLE -------------------------------------------------------------------
 title_txt <- "CARS"
 subtitle_txt <- "Calculator of Absolute Stroke Risk"
-
+ui_stroke_title <- enc2utf8("Apopleski")
+ui_bleeding_title <- enc2utf8("Blødning")
+ui_about_title <- enc2utf8("Om CARS")
 
 # INPUT UI ------------------------------------------------------------------
 input_title <- "1. INPUT"
@@ -14,7 +16,7 @@ in_age <- "Patientens alder (mellem 20 og 99):"
 in_sex <- "Køn"
 
 
-in_prevDiag <- "Har du tidligere været diagnosticeret med følgende:"
+in_prevDiag <- "Har patienten tidligere været diagnosticeret med følgende:"
 
 in_stroke <- "Apopleksi/ TCI / Perifer emboli?"
 in_hf <- "Hjertesvigt?"
@@ -44,19 +46,31 @@ help_vasc <-
 # Must be in quotedt pixels (px), e.g.: "100px"
 
 
+
+# TAB NAMES ---------------------------------------------------------------
+
+results_1 <- "Quick results"
+results_2 <- "Expanded results"
+
 # STROKE RESULTS ----------------------------------------------------------
 
 
 results_stroke_title <- "2. RESULTATER"
-out_stroke <-
-  "Risikoen for at f\u00E5 apopleksi inden for et år efter diagnosen atrieflimren er:"
+results_stroke_header <-
+  "Risikoen for at få apopleksi inden for et år efter diagnosen atrieflimren er:"
+
 
 out_stroke2 <- "Det betyder at  "
-out_stroke3 <- " ud af 1000 patienter med de samme risikofaktorer vil få
+out_stroke3 <- " ud af 100 patienter med de samme risikofaktorer vil få
 apopleksi inden for året efter diagnosen"
 out_strokeLessOne <-
-  "Det betyder at <1 ud af 1000 patienter med de samme risikofaktorer vil få
+  "Det betyder at <1 ud af 100 patienter med de samme risikofaktorer vil få
 apopleksi inden for året efter diagnosen."
+
+out_stroke4 <- "Dette er repræsenteret i nedenstående figur. Der er i alt 100
+cirkler, der repræsenterer 100 patienter med de samme risikofaktorer. Hver rød
+cirkel repræsenterer en patient, der oplevede et apopleksi, mens hver grønne
+cirkel repræsenterer en patient, der ikke oplevede det. "
 
 
 
@@ -75,22 +89,24 @@ out_bleedingLessOne <-
 would experience a major bleeding event within one year following diagnosis"
 
 
-# DESCRIPTIONS ------------------------------------------------------------
+# EXPLANITORY TEXT --------------------------------------------------------
 
-out_stroke_details <- "
+explanitory_header <- "Om CARS lommeregneren"
+
+explanitory_text_1 <- "
 CARS beregner den absolutte 1-årige risiko for apopleksi for patienter med
 atrieflimren som ikke er i antikoagulationsbehandling. Lommeregneren er baseret
 på en stor kohorte af danske patienter indlagt med atrieflimren for første gang
 på hospitalet [1]."
 
-out_stroke_details2 <- "
+explanitory_text_2 <- "
 Lommeregneren anvender de samme risikofaktorer som CHA2DS2-VASc-scoren [2]
 som er anbefalet i de seneste europæiske / amerikanske retningslinjer til at
 vurdere indikationen for antikoagulatonsbehandling til patienter med
 atrieflimren [3-4]. De vigtigste forskelle er følgende:"
-out_details_list1 <-
+explanitory_text_3 <-
   "Alder er inkluderet som en kontinuerlig variabel"
-out_details_list2 <-
+explanitory_text_4 <-
   "Den samlede risikoberegning tager højde for ikke en sum af risikofaktorer,
 men deres individuelle bidrag."
 

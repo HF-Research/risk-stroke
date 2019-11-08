@@ -60,7 +60,7 @@ outputHelper2 <- function(data, age, out2, out3, outLessOne){
   # Write description of output if age is valid
   if (is.valid.age(age)) {
     threshold <-
-      (round(data, digits = 1) * 0.01 * 1000)
+      (round(data, digits = 1) * 0.01 * 100)
     ifelse(
       threshold >= 1,
       paste0(out2, threshold, out3),

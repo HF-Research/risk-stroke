@@ -1,4 +1,4 @@
- // !preview r2d3 data=2, viewer = c("browser")
+ // !preview r2d3 data=18, viewer = c("browser")
 
 
 
@@ -8,27 +8,43 @@ var dim = Math.max(width, height);
 if (dim <220) {
   var dim = 220;
 }
-svg.attr("width", (dim)).attr("height", (dim-(1/3*dim)));
+svg.attr("width", (dim)).attr("height", (dim-(1/3.2*dim)));
 
 
 // GLOBAL
 padding = dim * 0.0625;
 var radius = dim / 2 - padding;
-var pie_data = [1]; // Don't need real data, this just sets up
+var pie_data = [1]; // Don't need real data, this just gives skeleton for element
 var maxVal = 0.27;
-var angle = 0; // Initialize angle var
 var angleMin = -110;
 var angleMax = 110;
 var angleRange = angleMax - angleMin;
 innerRadius = ((radius - 10) / 5) * 3;
+hubRadius = radius/12;
 var numLabels = 6;
+transitionMs = 1000;
 
 // FOMARRTING
-var labelOffset = -2;
-var textSize1 = "250%";
-var textSize2 = "200%";
+var labelOffset = -5; // Lower number moves away from graph
+var textSize1 = "300%";
+var textSize2 = "140%";
 xOffset = -dim * 0.0;
-yOffset = dim * 1.5 * 0.089;
+yOffset = dim * 1.5 * 0.12; // Higher number moves it downwards
+hubColor = "black";
+pointerColor = "black";
+
+
+// Pointer vars
+var pointerWidth = hubRadius*2;
+var pointerTailLength = 0;
+var pointerHeadLengthPercent = 0.9;
+pointerHeadLength = Math.round(radius * pointerHeadLengthPercent);
+var anglePointStartPadding = 0;
+var lineData =  [[pointerWidth / 2, 0],
+                [0, -pointerHeadLength],
+                [-(pointerWidth / 2), 0],
+                [0, pointerTailLength],
+                [pointerWidth / 2, 0]];
 
 // HELPER FUNCTIONS
 function deg2rad(deg) {
@@ -54,11 +70,11 @@ needleStart = function(degrees, xy){
 };
 
 // CONSTRUCTOR FUNCTIONS (I think)
-tickScale = d3.scaleLinear()
+gaugeScale = d3.scaleLinear()
   .domain([0, maxVal])
   .range([0, 1]);
 
-tickActuals = tickScale.ticks(numLabels);
+tickActuals = gaugeScale.ticks(numLabels);
 
 var valueToDegrees = d3.scaleLinear() //scaleLinear in d3v4!
   .domain([0, maxVal])
@@ -79,6 +95,10 @@ var gauge = d3.pie()
 var arc = d3.arc()
   .outerRadius(radius)
   .innerRadius(innerRadius);
+
+
+// Pointer constructor
+var pointerLine = d3.line().curve(d3.curveLinear);
 
 
 // BUILDING CHART
@@ -150,16 +170,7 @@ arcs.append("path")
   .attr("d", arc)
   .attr("fill", "url(#radial-gradient");
 
-// Draw starting needle
-var needle = wrap.append("g")
-	.attr("class", "needle")
-	.append( 'line' )
-	.attr( "x1", 0)
-	.attr( "x2", needleStart(angleMin, "x"))
-	.attr( "y1", 0 )
-	.attr( "y2", needleStart(angleMin, "y"))
-	.style( "stroke", "black" )
-	.style("stroke-width", 6);
+
 
 // Append text
 var text = svg.append("g")
@@ -167,6 +178,7 @@ var text = svg.append("g")
   .append("text")
     .attr("transform", "translate(" + (radius + padding + xOffset) + "," + (radius + padding + yOffset) + ")")
     .attr("font-size", textSize1)
+    .attr("font-weight", "bold")
     .attr("text-anchor", "middle");
 
 // Hub
@@ -175,9 +187,17 @@ wrap.append('g')
     .append("circle")
     .attr("cx", 0)
     .attr("cy", 0)
-    .attr("r", radius/10)
-    .attr("fill", "#666");
+    .attr("r", hubRadius)
+    .attr("fill", hubColor);
 
+// Append starting Pointer
+var pg = wrap.append('g').data([lineData])
+  .attr("class", "pointer");
+
+pointer = pg.append('path')
+  .attr('d', pointerLine)
+  .attr("transform", 'rotate(' + (angleMin + anglePointStartPadding)  + ")")
+  .attr("fill", pointerColor);
 
 // Labels
 wrap.append("g")
@@ -186,7 +206,7 @@ wrap.append("g")
     .data(tickActuals)
     .enter().append('text')
       .attr("transform", function(d) {
-        var ratio = tickScale(d);
+        var ratio = gaugeScale(d);
         var newAngle = angleMin + (ratio * angleRange);
         return('rotate(' +newAngle + ') translate(0' + (labelOffset - radius) + ')');
       })
@@ -199,18 +219,21 @@ wrap.append("g")
 
 
 // Rendering on data change
-r2d3.onRender(function(newVal, width, height){
+r2d3.onRender(function(newVal){
   /* Shiny gives data in %, but need to convert back to integer
   because d3.format will convert back to % in the Labels section... */
   newVal = newVal/100;
-  svg.select(".needle").select("line")
-    .transition()
-    .duration(1000)
-    .attrTween("transform", function(){
-      return tweenNeedle(newVal, maxVal);
-    });
 
-    text.datum(newVal).text(function(d) {
+  //Not sure why we use svg.select, instead of wrap.select?
+
+  var ratio = gaugeScale(newVal);
+  var newAngle = angleMin + (ratio * angleRange);
+  pointer.transition()
+    .duration(transitionMs)
+    .ease(d3.easeElastic.amplitude(0.2).period(0.9))
+    .attr("transform", "rotate(" + newAngle + ')');
+
+  text.datum(newVal).text(function(d) {
       if (d*100 < 0.1) {
         return "<0.1%";
       } else {
@@ -219,12 +242,5 @@ r2d3.onRender(function(newVal, width, height){
     });
 
 });
-
-function tweenNeedle(data, max){
-  var prevAngle = angle;
-  angle = (data / max *angleRange);
-  return d3.interpolateString("rotate(" + prevAngle + ")", "rotate(" + (data / max * angleRange) + ")");
-}
-
 
 
