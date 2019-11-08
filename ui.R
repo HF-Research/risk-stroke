@@ -17,7 +17,6 @@ ui <- div(
     collapsible = TRUE,
     theme = "www/cars-style.css",
     source(file.path("ui", "ui_stroke.R"), local = TRUE)$value,
-    source(file.path("ui", "ui_bleeding.R"), local = TRUE)$value,
     source(file.path("ui", "ui_about.R"), local = TRUE)$value
 
   )
