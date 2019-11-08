@@ -1,3 +1,27 @@
+
+# POPUP DISCLAIMER --------------------------------------------------------
+showModal(
+  modalDialog(
+    title = "Beta testing CARS",
+    easyClose = TRUE,
+    fade = TRUE,
+    tags$p(
+      tags$b(
+        "CARS does not work with Internet Explorer. Please choose Chrome/Firefox/Safari/Edge"
+      )
+    ),
+    tags$br(),
+    tags$p(
+      "This is a beta version of CARS that should only be used for testing purposes.
+    The data presented is awaiting peer review and has not been published."
+    ),
+    tags$p("Please send any feedback to mphelps@hjerteforeningen.dk"),
+    tags$br(),
+    tags$p("Click anywhere to dismiss")
+  )
+)
+
+
 onclick("hf", jsButtonColor("hf", "#AF060F", value = "yes"))
 
 
