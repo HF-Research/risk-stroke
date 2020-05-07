@@ -5,6 +5,6 @@ account: cars-online
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1348010
-bundleId: 2511494
+bundleId: 2579705
 url: https://hjerteforeningen.shinyapps.io/stroke-risk/
-when: 1571402910.95435
+when: 1573467007.12283
