@@ -1,25 +1,25 @@
 
 # POPUP DISCLAIMER --------------------------------------------------------
-showModal(
-  modalDialog(
-    title = "Beta testing CARS",
-    easyClose = TRUE,
-    fade = TRUE,
-    tags$p(
-      tags$b(
-        "CARS does not work with Internet Explorer. Please choose Chrome/Firefox/Safari/Edge"
-      )
-    ),
-    tags$br(),
-    tags$p(
-      "This is a beta version of CARS that should only be used for testing purposes.
-    The data presented is awaiting peer review and has not been published."
-    ),
-    tags$p("Please send any feedback to mphelps@hjerteforeningen.dk"),
-    tags$br(),
-    tags$p("Click anywhere to dismiss")
-  )
-)
+# showModal(
+#   modalDialog(
+#     title = "Beta testing CARS",
+#     easyClose = TRUE,
+#     fade = TRUE,
+#     tags$p(
+#       tags$b(
+#         "CARS does not work with Internet Explorer. Please choose Chrome/Firefox/Safari/Edge"
+#       )
+#     ),
+#     tags$br(),
+#     tags$p(
+#       "This is a beta version of CARS that should only be used for testing purposes.
+#     The data presented is awaiting peer review and has not been published."
+#     ),
+#     tags$p("Please send any feedback to mphelps@hjerteforeningen.dk"),
+#     tags$br(),
+#     tags$p("Click anywhere to dismiss")
+#   )
+# )
 
 
 onclick("hf", jsButtonColor("hf", "#AF060F", value = "yes"))
@@ -38,43 +38,10 @@ subsetStroke <- reactive({
               female %in% input$sex &
               stroke %in% input$stroke &
               heartfailure %in% input$hf &
-              diabetes %in% input$diabetes &
-              hypertension %in% input$hyperT &
+              diabetes %in% input$dm &
+              hypertension %in% input$hyper_t &
               vascular %in% input$vasc,
             stroke1y]
-})
-
-subsetBleed <- reactive({
-  bleed.dt[age == txt2num() &
-             hypertension %in% input$hyperT &
-             stroke %in% input$stroke &
-             ckd %in% input$ckd &
-             bleeding %in% input$bleeding &
-             drugs %in% input$drugs,
-           bleeding1y]
-})
-
-
-colorRamp <- reactive({
-  # Create first color ramp. We will extract a color from near the green side of
-  # this first color ramp. Then we make a second color ramp where we spline
-  # through the green-ish color we just extract. This will have the effect of
-  # pulling the green color up off the bottom after dong the log-transform.
-  n <- 1000
-  col_pal_1 <- colorRampPalette(colors = c("#2CDE0D", "red"))
-  col_ramp_1 <- col_pal_1(n)
-
-  # Make the second color ramp where we spline through the extracted color from
-  # the first color ramp.
-  col_pal <-
-    colorRampPalette(colors = c("#2CDE0D", col_ramp_1[65], "red"))
-  col_pal(n)
-
-})
-
-plotd3 <- reactive({
-  r2d3(subsetStroke(), script = "gauge.js")
-
 })
 
 enterAge <- reactive({
@@ -126,10 +93,19 @@ output$stroke_desc2 <- renderText({
 
 
 
+# GAUGE PLOT --------------------------------------------------------------
+
+output$plot_risk_gauge <- renderD3({
+  if (is.valid.age(txt2num())) {
+    r2d3(subsetStroke(), script = "gauge.js")
+
+  }
+})
+
 # VISUALIZE NUMBER OF SICK - STROKE ---------------------------------------
 output$plot_stroke <- renderUI({
   # Get the values for the board:
-  # browser()
+
   if (is.valid.age(txt2num())) {
     n_sick_stroke <- round(subsetStroke(), digits = 0)
     n_population <- 100

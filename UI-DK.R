@@ -21,7 +21,7 @@ in_prevDiag <- "Har patienten tidligere været diagnosticeret med følgende:"
 in_stroke <- "Apopleksi/ TCI / Perifer emboli?"
 in_hf <- "Hjertesvigt?"
 in_hyperT <- "Hypertension?"
-in_diab <- "Diabetes mellitus?"
+in_dm <- "Diabetes mellitus?"
 in_vasc <-
   "Vaskulær sygdom? (tidligere myokardieinfarkt, perifer arteriel sygdom)"
 in_yesNo_choice <- c("Nej", "Ja")

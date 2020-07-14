@@ -2,10 +2,7 @@ tabPanel(
   ui_stroke_title,
   useShinyjs(),
 
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "cars-style.css")
 
-  ),
   fluidRow(
     # STROKE-INPUT-------------------------------------------------------------------
     column(
@@ -36,67 +33,11 @@ tabPanel(
         div(id = "in_prevDiag", in_prevDiag),
         br(),
 
-        shinyWidgets::radioGroupButtons(
-          inputId = "hf",
-          label = in_hf,
-          choiceNames = in_yesNo_choice,
-          selected =  ("no"),
-          choiceValues = c("no",
-                           "yes"),
-          checkIcon = list(yes = icon("check")),
-          # width = button.width,
-          justified = TRUE
-        ),
-
-        shinyWidgets::radioGroupButtons(
-          inputId = "diabetes",
-          label = in_diab,
-
-          choiceNames = in_yesNo_choice,
-          selected =  ("no"),
-          choiceValues = c("no",
-                           "yes"),
-          checkIcon = list(yes = icon("check")),
-          # width = button.width,
-          justified = TRUE
-        ),
-
-        shinyWidgets::radioGroupButtons(
-          inputId = "vasc",
-          label = in_vasc,
-          choiceNames = in_yesNo_choice,
-          selected =  ("no"),
-          choiceValues = c("no",
-                           "yes"),
-          checkIcon = list(yes = icon("check")),
-          # width = button.width,
-          justified = TRUE
-        ),
-
-
-        shinyWidgets::radioGroupButtons(
-          inputId = "stroke",
-          label = in_stroke,
-          choiceNames = in_yesNo_choice,
-          selected =  "no",
-          choiceValues = c("no",
-                           "yes"),
-          checkIcon = list(yes = icon("check")),
-          # width = button.width,
-          justified = TRUE
-        ),
-
-        shinyWidgets::radioGroupButtons(
-          inputId = "hyperT",
-          label = in_hyperT,
-          choiceNames = in_yesNo_choice,
-          selected =  ("no"),
-          choiceValues = c("no",
-                           "yes"),
-          checkIcon = list(yes = icon("check")),
-          # width = button.width,
-          justified = TRUE
-        )
+        yesNoButton(id = ("hf"), label = in_hf),
+        yesNoButton(id = ("dm"), label = in_dm),
+        yesNoButton(id = ("vasc"), label = in_vasc),
+        yesNoButton(id = ("stroke"), label = in_stroke),
+        yesNoButton(id = ("hyper_t"), label = in_hyperT)
       )
     ),
 
@@ -116,7 +57,7 @@ tabPanel(
               # div(class = "results_header", results_stroke_header),
               div(class = "results_header", textOutput("stroke_desc1")),
               tags$h1(strong(textOutput("enter_age"))),
-              d3Output("plot_riskbar", height = "100%"),
+              d3Output("plot_risk_gauge", height = "100%"),
 
               br()
 

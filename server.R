@@ -1,10 +1,27 @@
 shinyServer(function(input, output, session) {
-  # source("global.R")
+
   # session$onSessionEnded(stopApp)
   source(file.path("server", "server_stroke.R"),
          encoding = "UTF-8",
          local = TRUE)$value
-  source(file.path("server", "server_bleeding.R"), local = TRUE)$value
   source(file.path("server", "server_about.R"), local = TRUE)$value
 
+
+# IE WARNING --------------------------------------------------------------
+
+  observeEvent(label = "IEwarning",  input$check, {
+    if (input$check == "TRUE") {
+      showModal(
+        modalDialog(
+          title = "CARS does not work with Internet Explorer",
+          easyClose = TRUE,
+          fade = TRUE,
+          tags$p(
+            "Please choose Chrome / Firefox / Safari / Edge"
+          )
+
+        )
+      )
+    }
+  })
 })

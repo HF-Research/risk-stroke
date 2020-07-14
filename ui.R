@@ -1,5 +1,7 @@
 ui <- div(
-
+tags$head(
+  includeScript("www/checkBrowser.js")
+),
   fluidPage(
     img(
       src = "hf-logo.png",
@@ -15,7 +17,7 @@ ui <- div(
   navbarPage(
     title = "CARS",
     collapsible = TRUE,
-    theme = "www/cars-style.css",
+    theme = "hjerteforenining-shiny.css",
     source(file.path("ui", "ui_stroke.R"), local = TRUE)$value,
     source(file.path("ui", "ui_about.R"), local = TRUE)$value
 
