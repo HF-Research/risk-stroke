@@ -21,8 +21,8 @@ tabPanel(
         shinyWidgets::radioGroupButtons(
           inputId = "sex",
           label = in_sex,
-          choices = c("Mand" = "no",
-                      "Kvinde" = "yes"),
+          choiceNames = ui_sex_labels,
+          choiceValues = c('no', "yes"),
           checkIcon = list(yes = icon("check")),
           selected =  "no",
           # width = button.width,

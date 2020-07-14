@@ -17,7 +17,7 @@ tags$head(
   navbarPage(
     title = "CARS",
     collapsible = TRUE,
-    theme = "hjerteforenining-shiny.css",
+    theme = "cars-style.css",
     source(file.path("ui", "ui_stroke.R"), local = TRUE)$value,
     source(file.path("ui", "ui_about.R"), local = TRUE)$value
 

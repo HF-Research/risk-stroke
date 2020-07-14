@@ -1,30 +1,3 @@
-
-# POPUP DISCLAIMER --------------------------------------------------------
-# showModal(
-#   modalDialog(
-#     title = "Beta testing CARS",
-#     easyClose = TRUE,
-#     fade = TRUE,
-#     tags$p(
-#       tags$b(
-#         "CARS does not work with Internet Explorer. Please choose Chrome/Firefox/Safari/Edge"
-#       )
-#     ),
-#     tags$br(),
-#     tags$p(
-#       "This is a beta version of CARS that should only be used for testing purposes.
-#     The data presented is awaiting peer review and has not been published."
-#     ),
-#     tags$p("Please send any feedback to mphelps@hjerteforeningen.dk"),
-#     tags$br(),
-#     tags$p("Click anywhere to dismiss")
-#   )
-# )
-
-
-onclick("hf", jsButtonColor("hf", "#AF060F", value = "yes"))
-
-
 # REACTIVE FUNCTIONS ------------------------------------------------------
 txt2num <- reactive({
   as.numeric(input$user_age)
@@ -44,20 +17,13 @@ subsetStroke <- reactive({
             stroke1y]
 })
 
+# VALID AGE OUTPUT --------------------------------------------------------
 enterAge <- reactive({
   if (!is.valid.age(txt2num()))
     enter_age
 })
 
-
-
-
-# VALID AGE OUTPUT --------------------------------------------------------
-
 output$enter_age <- renderText(enterAge())
-
-
-
 
 # SHOW/HIDE LOGIC ---------------------------------------------------------
 
@@ -107,36 +73,14 @@ output$plot_stroke <- renderUI({
   # Get the values for the board:
 
   if (is.valid.age(txt2num())) {
-    n_sick_stroke <- round(subsetStroke(), digits = 0)
-    n_population <- 100
-    board_fill <- c(rep(0, n_population - n_sick_stroke),
-                    rep(1, n_sick_stroke))
-    n_rows <- 10
-    n_cols <- 10
-    board <- matrix(board_fill,
-                    nrow = n_rows,
-                    ncol = n_cols,
-                    byrow = TRUE)
+    risk_matrix_viz(
+      subset_stroke = subsetStroke(),
+      n_pop = 100,
+      n_rows = 10,
+      n_cols = 10
+    )
 
-    # Assign appropriate div IDs to each cell in the board:
-    isolate({
-      div(id = "board-inner",
-          lapply(seq(n_rows), function(row) {
-            tagList(div(class = "board-row",
-                        lapply(seq(n_cols), function(col) {
-                          # browser()
-                          value <- board[row, col]
-                          # value <- board_entries(values$board)[row, col]
-                          visClass <- ifelse(value == 0, "off", "on")
-                          id <- sprintf("cell-%s-%s", row, col)
-                          div(id = id,
-                              class = paste("board-cell", visClass))
-                        })),
-                    # This empty div seems to provide a way to "break" the rows. Without this
-                    # div element, the rows all move to one long line
-                    div())
-          }))
-    })
   }
 })
+
 

@@ -14,7 +14,7 @@ ui_about_title <- enc2utf8("Om CARS")
 input_title <- "1. INPUT"
 in_age <- "Patientens alder (mellem 20 og 99):"
 in_sex <- "Køn"
-
+ui_sex_labels <- c("Mand", "Kvinde")
 
 in_prevDiag <- "Har patienten tidligere været diagnosticeret med følgende:"
 
