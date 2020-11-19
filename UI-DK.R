@@ -3,6 +3,7 @@
 # Make edits to the UI in this file
 # Var names should not contain "." due to conflicts with JavaScript
 
+#TODO: Needs english version
 # TITLE -------------------------------------------------------------------
 title_txt <- "CARS"
 subtitle_txt <- "Calculator of Absolute Stroke Risk"

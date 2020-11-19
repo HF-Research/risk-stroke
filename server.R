@@ -17,7 +17,7 @@ shinyServer(function(input, output, session) {
           easyClose = TRUE,
           fade = TRUE,
           tags$p(
-            "Please choose Chrome / Firefox / Safari / Edge"
+            "Please choose Firefox / /Brave / Safari / Chrome"
           )
 
         )

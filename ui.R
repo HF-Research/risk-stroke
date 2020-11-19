@@ -1,17 +1,25 @@
 ui <- div(
 tags$head(
+
+  # TODO: Include JS script to add link to diff lang versions
   includeScript("www/checkBrowser.js")
 ),
   fluidPage(
-    img(
+    tags$a(
+      img(
       src = "hf-logo.png",
       align = "left",
       style = "padding-top: 20px; padding-bottom: 40px; padding-left: 1rem;",
       height = "110px"
     ),
+    href = "https://hjerteforeningen.dk/", target ="_blank"),
+
     div(style = "padding-left: 0px; padding-right: 0px;",
         titlePanel(
-          title = "", windowTitle = "CARS"
+          title = "", windowTitle = tags$head(
+            tags$link(rel = "icon", type = "image/png", href = "hf-icon.png"),
+            tags$title("CARS")
+          )
         ))
   ),
   navbarPage(
